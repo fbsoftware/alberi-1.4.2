@@ -1,0 +1,48 @@
+﻿/* At-Rules */
+@charset "UTF-8";
+
+/* ==== TAG PERSONALIZZATI ==== */
+BODY { margin:0 ;
+padding:0 10%;
+font-family:verdana, arial;
+font-size: 10pt;
+}
+
+fieldset  {border-right:2px solid #cc9933 ;
+border-bottom:5px solid #cc9933 ;
+border-left:1px solid #cc9933 ;
+border-top:1px solid #cc9933 ;
+text-align: left;;
+margin:5px;}
+
+legend              {   color: #980000;
+font-weight:normal; }
+
+header     { 
+width:  100%;
+height:10%;}
+
+#corpo {float:left;
+width:100%;
+min-height:140px;}
+
+
+article {float:left;
+width:48px;
+background:transparent;
+color:#000;}
+
+                  
+aside.left     {float:left;
+width:24px;
+color:#000;
+  min-height:300px;}
+
+aside.right {margin-left:75%;
+width:24px;
+background:transparent;
+color:#000;}
+ 
+footer     {   float:left;
+width:  100%;
+height:5%;}

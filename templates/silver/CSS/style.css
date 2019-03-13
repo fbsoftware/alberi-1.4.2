@@ -1,0 +1,72 @@
+/* at-rules */
+	@charset "UTF-8";
+/* ==== tag personalizzati ==== */
+header {
+	background-color: #dcdcdc;
+}
+article {
+	background: transparent;
+	color: #000;
+}
+aside.left {
+	background: transparent;
+	color: #000;
+	;
+}
+aside.right {
+	background: transparent;
+	color: #000;
+}
+footer p {
+	color: #a52a2a;
+}
+a:link {
+	color:  #800000;
+}
+a:active {
+	color: fuchsia;
+}
+a:visited {
+	color: navy;
+}
+a:hover {
+	color:  red;
+}
+p {
+	color: #000000;
+}
+.p:first-letter {
+	color: #4A7296;
+}
+hr {
+	color: #4A7296;
+	background-color: #3f3f3f;
+}
+h3 {
+	color: #4A7296;
+     padding-left:15px;
+}
+fieldset {
+	border: 1px dotted #a4a4a4;
+	;
+}
+legend {
+	color: #3f3f3f;
+}
+/*   div   */
+div#pagina {
+	-moz-box-shadow: 5px 5px 1em #444444;
+}
+div#corpo {
+	background: #d6d6d6;
+}
+/*  box per menu  */
+.box {
+	border: 1px solid  #a4a4a4;
+	-moz-box-shadow: 5px 5px 1em #444444;
+}
+.box-header {
+	color: #ffffff;
+	background: #3f3f3f;
+	-moz-box-shadow: 5px 5px 1em #444444;
+}

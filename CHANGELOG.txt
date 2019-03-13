@@ -1,0 +1,52 @@
+CHANGELOG dal 25/03/2013
+
+Versione 1.1
+     - campi data con calendario jquery, aggiunti metodi field_d per gestire le date.
+     - installato in FAEL il 24-04-2013. 
+Versione 1.2
+     - stampe con FPDF.
+Versione 1.3
+modifica 0
+    note anagrafiche in immissione versamenti.
+modifica 1
+    risolto problema apostrofi campi a video.
+modifica 2
+    Versamenti iscritti ed elargitori, aggiunti e gestiti i campi:
+      - mezzo pagamento (Da tabella xdb settore pag)
+      - progressivo = nr.ricevuta
+    stampa delle ricevute se nuovi movimenti.
+    3 tipi di ricerca per elargizioni, come per versamenti.
+modifica 3 - 31/01/14    
+    aggiunto campo riferimento a tbl_vel/ver
+    stampa delle ricevute solo per contanti/assegni
+modifica 4 - 06/02/14
+    ricevuta versamenti: stampa importo in lettere e registrazione al Nr.
+    stampa attestazione nuovo iscritto
+    unificazione dummy tramite parametro per governare header ...
+modifica 5 - 10/03/2014
+     visualizzazione iscritti in tabella per allineamento migliore
+     gestione iscritti con jquery
+     uscita ignora i campi obbligatori (con bordo rosso)
+modifica 6 - 17/03/2015
+     stampa elargizioni annuali anche in ordine inverso di importo
+modifica 7 - 27-03-2016
+     elenco iscritti per anno e per età
+     elenco componenti consiglio direttivo
+     autocomplete solo per nome e numero
+     aggiunta categoria elargitori e indirizzi per stampe personalizzate
+     mostra nel titolo l'utente collegato
+     per iscritti ed archiviati aggiunta funzione mostra (interrogazione)
+     aggiunto referente alla query indirizzi  
+VERSIONE 1.4.0
+     Nuova classe per bottoni e titoli con immagini in cartella: images/bottoni.   
+     Mappa login aggiornata.
+     Input obbligatorio con spazio iniziale per evitare errore in uscita senza compilazione, 
+     in memorizzazione sistemato con trim(), input codice fiscale e località sempre maiuscolo 
+     strtoupper().
+     Nuovo logo FAEL.
+modifica 1 - 14/12/2016
+     Autofocus sul nome nelle ricerche "jquery autocomplete"  
+modifica 2 - 6,7,9/10/2017
+     tabella "vel" aggiunto campo evento per gestire i diversi eventi codificati
+     nella tabella "xdb" settore "eve" e stampabili con "gest_prt_elanno" e "prt_elanno".
+                                                          

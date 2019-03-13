@@ -1,0 +1,51 @@
+   
+<!-- ** Fausto Bresciani   fbsoftware@libero.it  www.fbsoftware.altervista.org
+   * package		Gestione Associazione
+   * versione 1.0    
+   * copyright	Copyright (C) 2012 - 2013 FB. All rights reserved.
+   * license		GNU/GPL
+   * Si concede licenza gratuita e NON si risponde di qualsiasi cosa dovuta 
+   * all'uso anche improprio di FB open template.
+=============================================================================
+   * gestione tabella 'isc' per archiviati
+   * 17.04.2013 - Datepicker   
+============================================================================= -->
+<!DOCTYPE html lang='it'>
+     <html>
+<head>       
+<script src='js/date_picker_it.js'></script>       
+  <link rel="stylesheet"  type="text/css"  href="css/reset.css"/>     
+  <link rel="stylesheet"  type="text/css"  href="css/base.css" />     
+  <link rel='stylesheet'  type='text/css'  href='css/style.css'>   
+<style type="text/css">
+ form {
+ float:left;
+ }
+</style>    
+</head> 
+
+<body>   <div> 
+<form action="input.html">     
+                    
+  <label for='campo'>Campo richiesto
+  </label>                     
+  <input class='req' type='text'                       
+  name='campo' id='campo' value=''                       
+  size='30' required='Inserire il cognome'>
+
+<button class="big" value="ins" name="submit" type="submit">
+<img height="25" src="images/save_f2.png">
+Salva
+</button>
+</form> 
+
+
+<form action="gest_isc.php"> 
+<button class="big" value="uscita" name="submit" type="submit">
+<img height="25" src="images/cancel_f2.png">
+Uscita
+</button>
+</form> 
+ 
+</div>     
+</body></html>

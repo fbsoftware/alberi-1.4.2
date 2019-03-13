@@ -1,0 +1,47 @@
+/* at-rules */
+@charset "UTF-8";
+
+/* ==== tag personalizzati ==== */
+
+a:link 				{color:  #800000;}
+a:active 			{color: fuchsia;}
+a:visited 			{color: navy;}
+a:hover                             {color:  red;}
+p 					  {color: #000000;}
+.p:first-letter		{color:#000000; }
+
+h3               {color: #750b0b;}
+hr               {   color: #000000; }
+
+fieldset         {border:1px ridge #964747;}
+
+legend           {color: #750b0b;}
+
+/*  d i v  */
+nav      			     {background: #b98484;}
+#pagina              {-moz-box-shadow:5px 5px 1em #444444;}
+#corpo 				       {background:#b98484;}
+#blog-header 	       {color:#ffffff;
+                      background: #750b0b ;}
+
+#blog 			         {border:1px solid  #750b0b;}
+
+header {
+    background-color: #b98484;
+}
+article 			       {background:transparent;
+                   color:#000;	}
+
+aside.left 	{background:transparent;
+                color:#000;	;}
+
+aside.right 	{background:transparent;
+                color:#000;}
+
+footer p           {color:#000000;}
+
+/*  box per menu  */
+.box 		{-moz-box-shadow:5px 5px 1em #444444;}
+.box-header 	    {color:#ffffff;
+                  -moz-box-shadow:5px 5px 1em #444444;
+                  background:#750b0b;}

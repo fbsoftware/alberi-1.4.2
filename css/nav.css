@@ -1,0 +1,37 @@
+
+      /* At-Rules */
+      @charset "UTF-8";
+
+      /*- Menu Tabs H--------------------------- */
+
+      .nav {
+      	float:left;
+      	width:95%;
+     	  margin:0;    
+      	font-size:93%;           
+      	line-height:normal;
+        list-style:none;
+        padding:5px 0;}      
+
+      .nav li {
+      	display:inline;
+      	margin:0;
+      	padding:0;}
+      .nav a {
+     	float:left;   
+      	background:#dcdcdc;
+      	margin:0;
+      	padding:5px 8px;
+      	text-decoration:none;
+      	color:#000000;
+        font-weight:bold;
+        border-right:1px solid #aaaaaa;}
+      /* Commented Backslash Hack hides rule from IE5-Mac \  */
+      .nav a {float:none;}                                  
+      /* End IE5-Mac hack */
+
+      .nav a:hover {color: #000000; 
+                  background:#aaaaaa;}
+
+      .nav .current a {color:brown;
+                      background:#aaaaaa;}

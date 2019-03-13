@@ -1,0 +1,17 @@
+/* CSS Document */
+@page {
+	size: landscape;
+}
+
+.busta {
+	position: absolute;
+	margin-top: 350px;
+	margin-left: 400px;
+	font-weight: bold;
+	font-size: 12pt;
+}
+
+div.tabella {
+	font-weight: normal;
+	font-size: 12pt;
+}

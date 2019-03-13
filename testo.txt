@@ -1,0 +1,10 @@
+1  Bianchi  Bruno
+4  Bresciani  Guido
+5  Genovesi  Franca
+11  Napoli  Mauro
+9  Neri  Giuliana
+2  Rossi  Alberto
+13  Veneziani  Giuseppe
+3  Verdi  Giorgio
+15  Verdini  Lidia
+

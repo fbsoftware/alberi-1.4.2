@@ -1,0 +1,46 @@
+ @charset "UTF-8";
+ /*- Menu nav --------------------------- */
+
+ .nav {
+ 	float:left;
+ 	width:100%;
+ 	background:#f0e68c;
+ 	font-size:93%;
+ 	line-height:normal;
+ 	border-bottom:1px solid #980000;    }
+
+ .nav ul {
+ 	margin:0;
+ 	padding:0;
+ 	list-style:none;  }
+
+ .nav li {
+ 	display:inline;
+ 	margin:0;
+ 	padding:0;  }
+
+ .nav a {
+ 	float:left;
+ 	display:block;
+ 	background:#ff9933;
+ 	padding:5px 15px 4px 6px;
+ 	color:#cc9933;
+  font-weight:bold;
+ }
+ /* Commented Backslash Hack hides rule from IE5-Mac \*/
+ .nav a {float:none;}
+ /* End IE5-Mac hack */
+ /* hover */
+
+ .nav a:hover {
+ 	background:#ff9933;
+ 	color: #980000;
+ }
+ /* current */
+
+ .nav  a.current {
+ 	background:#ff9933;
+ 	color:#980000;
+ }
+ *	  {margin: 0px;
+ 	padding: 0px}

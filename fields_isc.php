@@ -1,0 +1,34 @@
+﻿<?php
+$id            =$row['id'];
+$stato         =$row['stato'];
+$numero_iscrizione    =$row['numero_iscrizione'];                        
+$titolo        =$row['titolo'];
+$titolo_plus   =$row['titolo_plus'];          
+$cognome       =$row['cognome'];
+     $cognome  = htmlspecialchars($cognome,ENT_QUOTES);
+$nome          =$row['nome'];        $nome        = htmlspecialchars($nome,ENT_QUOTES);              
+$indirizzo     =$row['indirizzo'];   $indirizzo   = htmlspecialchars($indirizzo,ENT_QUOTES);  
+$cap           =$row['cap']; 
+$localita      =$row['localita'];    $localita    = htmlspecialchars($localita,ENT_QUOTES);
+$prov          =$row['prov'];            
+$telefono      =$row['telefono'];
+$cellulare     =$row['cellulare'];
+$cod_fisc      =$row['cod_fisc'];
+$nascita_luogo =$row['nascita_luogo'];      
+$nascita_luogo = htmlspecialchars($nascita_luogo,ENT_QUOTES);
+$prov_na       =$row['prov_na'];                  
+$nascita_nazione    =$row['nascita_nazione'];
+$dat = new data($row['nascita_data']);
+$nascita_data = $dat->flipdata();
+$dat = new data($row['data_iscrizione']);
+$data_iscrizione = $dat->flipdata();
+$tipologia     =$row['tipologia'];
+$icons_ese     =$row['icons_ese'];
+$icons_dir     =$row['icons_dir'];
+$icons_garan   =$row['icons_garan'];
+$stampa        =$row['stampa'];
+$archiviare    =$row['archiviare'];
+$email         =$row['email'];
+$note          =$row['note'];               
+$note          = htmlspecialchars($note,ENT_QUOTES);
+?>

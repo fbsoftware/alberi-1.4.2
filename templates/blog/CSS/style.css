@@ -1,0 +1,111 @@
+/* * Fausto Bresciani   fbsoftware@libero.it  www.fbsoftware.altervista.org
+* packageFB open template
+* * versione 1.3
+* * copyrightCopyright (C) 2010 - 2011 FB. All rights reserved.
+* * licenseGNU/GPL* Si concede licenza gratuita e NON si risponde di qualsiasi cosa dovuta
+* * all'uso anche improprio di FB open template.
+* ============================================================================= */
+	@charset "UTF-8";
+/* ==== tag personalizzati ==== */
+a:link {
+	color:  #800000;
+}
+
+a:active {
+	color: fuchsia;
+}
+
+a:visited {
+	color: navy;
+}
+
+a:hover {
+	color:  red;
+}
+
+p , body {
+	color: #000000;
+}
+
+.p:first-letter {
+	color: #f93;
+}
+
+h3 {
+	color: #f93;
+}
+
+hr {
+	color: #f93;
+	background-color: #f93;
+}
+
+fieldset {
+	border: 1px solid #8d9b98;
+}
+
+legend {
+	color: darkred;
+}
+
+/*  div  */
+nav {
+	background-color: grey;
+}
+
+div#pagina {
+	box-shadow: 5px 5px 1em #444444;
+}
+
+div#corpo {
+	background-color: gainsboro;
+}
+
+header {
+	background-color: #dcdcdc;
+}
+
+article {
+	background: transparent;
+	color: #000000;
+	padding: 0 5px;
+}
+
+aside.left {
+	background: transparent;
+	color: #fff;
+}
+
+aside.right {
+	background: transparent;
+	color: #fff;
+}
+
+footer p {
+	color: darkred;
+	text-align: center;
+}
+
+div#testo {
+	padding: 2px;
+	margin: 3px;
+}
+
+/*  box per menu  */
+.box-header {
+	color: #ffffff;
+	background: #8d9b98;
+	color: darkred;
+}
+
+/*  blog  */
+
+.box {
+	border: 1px solid #7ea5cc;
+	box-shadow: 0 0 1em #FFD700;
+}
+.blog-header {
+	color: darkred;
+	background: #ff9933;
+	border-bottom: 1px solid #996600;
+}
