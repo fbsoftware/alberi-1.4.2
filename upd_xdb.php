@@ -7,11 +7,12 @@
    * Si concede licenza gratuita e NON si risponde di qualsiasi cosa dovuta 
    * all'uso anche improprio di FB open template.
 ============================================================================= */
-// DOCTYPE & head
-include_once 'include_gest.php';
-$head = new getBootHead('gestione iscritti');
+require_once('loadLibraries.php');
+require_once('loadTemplateAdmin.php');
+require_once('lingua.php');
+$head = new getBootHead('tipologie');
      $head->getBootHead(); 
-     echo "</head>";   
+echo "</head>"; 
      
 // variabili di configurazione 
 $pref          = DB::$pref;               // prefisso tabelle
@@ -55,7 +56,7 @@ switch ($azione)
       $xdb = new DB_ins('xdb','xprog');                      
       $f1 = new input(array($xdb->insert(),'xprog',3,'Progressivo',' ','i'));     
           $f1->field();
-      $ts = new DB_tip_i('stato','xstat','','Stato record'); 
+      $ts = new DB_tip_i('stato','xstat','','Stato record',''); 
           $ts->select();
       $f2 = new input(array('','xtipo',5,'Tipo',' ','ia'));                  
           $f2->field(); 
@@ -86,7 +87,7 @@ switch ($azione)
           $f0->field(); 
       $f1 = new input(array($xprog,'xprog',3,'Progressivo','','i'));         
           $f1->field();       
-      $ts = new DB_tip_i('stato','xstat',$xstat,'Stato record'); 
+      $ts = new DB_tip_i('stato','xstat',$xstat,'Stato record',''); 
           $ts->select();
       $f2 = new input(array($xtipo,'xtipo',5,'Tipo','','ir'));                
           $f2->field(); 

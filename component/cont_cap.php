@@ -13,16 +13,20 @@
    * se "cmostra"=1 mostra il testo del capitolo.       
    * 3.0 uso di 'namespace'
 =============================================================================*/
+$app = new DB();
+try  {
+	$PDO = new PDO("mysql:host=".DB::$host.";dbname=".DB::$db."",DB::$user,DB::$pw);
+     } catch(PDOException $e) { echo $e->getMessage();  }
+$PDO->beginTransaction();
 
 // stampa il testo del capitolo.
-       $sql1 = "SELECT * FROM `".$pref."cap` 
+       $sql1 = "SELECT * FROM `".DB::$pref."cap` 
                 WHERE ccod='$dati' and cstat <> 'A'  ";
-      $result1 = mysql_query($sql1);   
-      if(mysql_num_rows($result1)!=0)  
+foreach($PDO->query($sql) as $row)
       {
-       while($row = mysql_fetch_array($result1))
-        { $ctext   = $row['ctext']; 
-          $cmostra = $row['cmostra']; 
+        { 
+		$ctext   = $row['ctext']; 
+		$cmostra = $row['cmostra']; 
         }
         if ($cmostra == 1) {  echo $ctext;   }
       }     

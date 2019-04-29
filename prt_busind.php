@@ -9,11 +9,12 @@
 =============================================================================  
    * Stampa buste - INDIRIZZI x gruppi
 =============================================================================  */
-// DOCTYPE & head
-include_once 'include_gest.php';
+require_once('loadLibraries.php');
+require_once('loadTemplateAdmin.php');
+require_once('lingua.php');
 $head = new getBootHead('gestione iscritti');
      $head->getBootHead(); 
-     echo "</head>";   
+echo "</head>";    
 $ordine   = $_POST['ordine'];
 $categ    = $_POST['categ'];  
 $azione   = $_POST['submit']; 

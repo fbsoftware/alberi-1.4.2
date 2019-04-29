@@ -9,12 +9,13 @@
 =============================================================================
    * Gestione versamenti iscritti - modifica e cancella
 ============================================================================= */
-include_once 'include_gest.php';
-//$_REQUEST['err'] = NULL;
 $tipo     = $_SESSION['pag']; 
-// DOCTYPE & head
-$head = new getBootHead('Versamenti iscritti');
+require_once('loadLibraries.php');
+require_once('loadTemplateAdmin.php');
+require_once('lingua.php');
+$head = new getBootHead('gestione iscritti');
      $head->getBootHead(); 
+echo "</head>"; 
 echo "<script src='js/FBbase.js'></script> ";
 include_once('post_ver.php');           
 $azione   =$_POST['submit'];   //print_r($_POST);//debug
@@ -80,7 +81,7 @@ $btx    = new bottoni_str_par('Modifica versamenti','ver','write_ver.php',$param
           $f4->field();     
      $f5 = new input(array(number_format($vimporto,2,',',''),'vimporto',10,'Importo','','ir'));               
           $f5->field();
-     $tb = new DB_tip_i('pag','vmezzo',$vmezzo,'A mezzo');      
+     $tb = new DB_tip_i('pag','vmezzo',$vmezzo,'A mezzo','');      
           $tb->select(); 
      $f9 = new input(array($vrife,'vrife',30,'Riferimento','','i'));          
           $f9->field();

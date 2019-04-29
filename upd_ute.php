@@ -7,12 +7,12 @@
    * Si concede licenza gratuita e NON si risponde di qualsiasi cosa dovuta 
    * all'uso anche improprio di FB open template.
 ============================================================================= */
-// DOCTYPE & head
-include_once 'include_gest.php';
+require_once('loadLibraries.php');
+require_once('loadTemplateAdmin.php');
+require_once('lingua.php');
 $head = new getBootHead('gestione iscritti');
      $head->getBootHead(); 
-     echo "</head>";   
-
+echo "</head>"; 
 include('post_ute.php') ;          
 //print_r($_POST);//debug
 $azione    =$_POST['submit'];          
@@ -38,7 +38,7 @@ case 'nuovo':
      echo  "<fieldset>"; 
       $f3 = new input(array($nmax,'uprog',03,'Progressivo','','i'));           
           $f3->field();        
-      $ts = new DB_tip_i('stato','ustat','','Stato record');     
+      $ts = new DB_tip_i('stato','ustat','','Stato record','');     
           $ts->select();
       $f4 = new input(array('','username',20,'Utente','','ir'));                
           $f4->field();  
@@ -73,7 +73,7 @@ case 'modifica':
           $f2->field();             
       $f3 = new input(array($uprog,'uprog',03,'Progressivo','','i'));         
           $f3->field();   
-      $ts = new DB_tip_i('stato','ustat',$ustat,'Stato record');
+      $ts = new DB_tip_i('stato','ustat',$ustat,'Stato record','');
           $ts->select();
       $f4 = new input(array($username,'username',20,'Utente','','i'));        
           $f4->field();  

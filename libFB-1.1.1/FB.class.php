@@ -640,7 +640,7 @@ echo    "</tr></table></div>";
  * @class:      imgUpdTable
  *
  * @description:Tabella con immagini dimensionate e celle per riga
- *               e possibilit‡ di upload/download.
+ *               e possibilit√† di upload/download.
  * @author Fausto Bresciani <fbsoftware@libero.it>
  * @version 0.1
  */
@@ -741,9 +741,12 @@ public $titolo="";
 
         public function __construct($titolo)       
                { $this->titolo = $titolo;  }
+			   
                
 function getBootHead() 
      { 
+echo "<head>";
+
 ?> 
      <title><?php echo DB::$page_title." - ".$this->titolo; ?></title>
      <meta charset="utf-8">
@@ -753,15 +756,93 @@ function getBootHead()
      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
      <link rel="stylesheet" href="css/stili-custom.css" type="text/css" media="screen">
      <!-- Jquery -->
-  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>  
-  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <script src="jquery/jquery-1.12.4.js"></script>
+  <script src="jquery/ui/1.12.1/jquery-ui.js"></script>  
+  <link rel="stylesheet" href="jquery/ui/1.12.1/themes/base/jquery-ui.css">
 <?php 
 //-- personali -->
 include 'include_head.php';
 echo "</head>";
      }
 }
+/**=============================================================================== 
+  Classe 'Head'       
+  metodo openHead()    crea testata di HTML 
+  metodo closeHead()    chiude testata di HTML
+============================================================================= */
+class Head
+{
+public $titolo=""; 
+
+        public function __construct($titolo)       
+            { $this->titolo = $titolo;  }
+               
+	function openHead() 
+    { 
+	echo "<head>";
+    echo "<title>".DB::$page_title." - ".$this->titolo."</title>";
+	echo "<meta charset='utf-8'>";
+	echo "<meta http-equiv='content-type' content='text/html'> ";
+	echo "<meta name='description' 	content='".DB::$site."' >";             
+    echo "<meta name='keywords' 	content='".DB::$keywords."' >";             
+    echo "<meta name='author' 		content='".DB::$author."' >";	           
+
+	// personali 
+	include 'include_head.php';
+     }
+	 
+	function closeHead() 
+    { 
+	echo "</head>";
+     }
+}
+
+/**=============================================================================== 
+  Classe 'getJquery'       
+  metodo getJquery()    script per Jquery
+============================================================================= */
+class Jquery
+{
+               
+function getJquery() 
+	{ 
+	echo "<script src='http://code.jquery.com/jquery-1.12.4.js'></script>
+	<script src='https://code.jquery.com/ui/1.12.1/jquery-ui.min.js'></script>  
+	<link rel='stylesheet' href='http://code.jquery.com//ui/1.12.1/themes/base/jquery-ui.css'>
+    <script src='js/FBbase.js'></script>
+    <script src='js/date_picker_it.js'></script>";
+	}
+	
+}
+
+/**=============================================================================== 
+  Classe 'getBootstrap'       
+  metodo getBootstrap()    script per Bootstrap
+============================================================================= */
+class Bootstrap
+{
+function getBootstrap() 
+    { 
+	echo "<meta name='viewport' content='width=device-width, initial-scale=1'>
+     <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css'>
+     <script src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js'></script>
+     <link rel='stylesheet' href='css/stili-custom.css' type='text/css' media='screen'>";
+    }
+}
+
+/**=============================================================================== 
+  Classe 'getEditor'       
+  metodo getJEditor()    editore di testi================================= */
+class Editor
+{
+               
+function getEditor() 
+	{ 
+	include('tinys.php');
+	echo " <link rel='stylesheet' type='text/css' href='tinymce/jscripts/tiny_mce/themes/advanced/skins/default/ui.css'>";
+	}
+}
+
 /**=============================================================================== 
   Classe 'testChoice'       
   metodo testChoice()    test sulla scelta del pgm precedente

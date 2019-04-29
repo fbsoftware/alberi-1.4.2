@@ -41,7 +41,7 @@ $btx   = new bottoni_str_par('Gestione elargitori','ela','upd_ela.php',$param);
      $btx->btn();
      
 // zona messaggi
-$msg = new msg($_SESSION['errore']);
+$msg = new msg($_SESSION['esito']);
      $msg->msg();
      
 // memorizza location iniziale

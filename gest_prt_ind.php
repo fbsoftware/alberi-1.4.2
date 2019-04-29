@@ -19,11 +19,11 @@ $_SESSION['location'] = $_SERVER['QUERY_STRING'];
      
 //   scelte
      echo    "<div class='container col-md-4'><fieldset >";
-     $tb = new DB_tip_i('ord','ordine','','Ordine di stampa');      
+     $tb = new DB_tip_i('ord','ordine','','Ordine di stampa','');      
      $tb->select();
 // categoria
 
-     $ti = new DB_tip_i('ind','stampa','','Categoria');      
+     $ti = new DB_tip_i('ind','stampa','','Categoria','');      
      $ti->select();
      echo "</form></fieldset></div>" ;
 ?>

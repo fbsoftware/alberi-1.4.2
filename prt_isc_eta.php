@@ -9,11 +9,12 @@
 =============================================================================  
    * Stampa ISCRITTI per età
 =============================================================================  */ 
-// DOCTYPE & head
-include_once 'include_gest.php';
+require_once('loadLibraries.php');
+require_once('loadTemplateAdmin.php');
+require_once('lingua.php');
 $head = new getBootHead('gestione iscritti');
      $head->getBootHead(); 
-     echo "</head>";  
+echo "</head>"; 
        
 $gio = $_POST['gio'];
 $anz = $_POST['anz'];

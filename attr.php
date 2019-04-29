@@ -9,10 +9,12 @@
 ============================================================================= 
    * Scrittura versamenti iscritti
 =============================================================================*/
-include_once 'include_gest.php';
-// DOCTYPE & head
-$head = new getBootHead('Versamenti iscritti');
+require_once('loadLibraries.php');
+require_once('loadTemplateAdmin.php');
+require_once('lingua.php');
+$head = new getBootHead('gestione iscritti');
      $head->getBootHead(); 
+echo "</head>"; 
      // transazione    
      $con = "mysql:host=".DB::$host.";dbname=".DB::$db."";
      $PDO = new PDO($con,DB::$user,DB::$pw);

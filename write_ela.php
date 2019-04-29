@@ -9,11 +9,12 @@
 =============================================================================
    * aggiornamento tabella 'ela'      
 ============================================================================= */
-// DOCTYPE & head
-include_once 'include_gest.php';
-$head = new getBootHead('gestione elargitori');
+require_once('loadLibraries.php');
+require_once('loadTemplateAdmin.php');
+require_once('lingua.php');
+$head = new getBootHead('gestione iscritti');
      $head->getBootHead(); 
-     echo "</head>";   
+echo "</head>";   
 include('post_ela.php'); 
 // transazione
      $con = "mysql:host=".DB::$host.";dbname=".DB::$db."";

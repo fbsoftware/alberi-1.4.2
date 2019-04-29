@@ -1,4 +1,4 @@
-﻿<?php  session_start(); 
+<?php  session_start(); 
 /*** Fausto Bresciani   fbsoftware@libero.it  www.fbsoftware.altervista.org
    * package		FB open template
    * versione 1.3    
@@ -9,12 +9,10 @@
    * ------------------------------------------------------------------------
    * gestione tabella 'xdb' sipologie codificate.      
 ============================================================================= */ 
-// DOCTYPE & head
-include_once 'include_gest.php';
-$head = new getBootHead('gestione iscritti');
-     $head->getBootHead(); 
-     echo "</head>"; 
-        
+require_once('loadLibraries.php');
+require_once('loadTemplateAdmin.php');
+require_once('lingua.php');
+      
 // variabili di configurazione 
 $pref          = DB::$pref;               // prefisso tabelle
 $site          = DB::$site;               // descrizione sito
@@ -33,7 +31,7 @@ $btx   = new bottoni_str_par('Tipologie','xdb','upd_xdb.php',$param);
 $_SESSION['location'] = $_SERVER['QUERY_STRING'];
      
 // zona messaggi
-$msg = new msg($_SESSION['errore']);
+$msg = new msg($_SESSION['esito']);
      $msg->msg();
   
 echo "<div class='col-md-6 fb-table-scroll'>";

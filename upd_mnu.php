@@ -9,29 +9,28 @@
 =============================================================================
    *   
 ============================================================================= */
-echo "<!DOCTYPE html><html><head>";
-echo "<link rel='stylesheet' href='css/style.css' type='text/css'>";
-echo "</head><body>";
-include_once('classi/DB.php');
-include_once('classi/bottoni.php');
-include_once('classi/field.php');
+require_once('loadLibraries.php');
+require_once('loadTemplateAdmin.php');
+require_once("connectDB.php");
 
-$db2 = new DB('sito');  $db2->openDB(); 
-include_once('post_mnu.php'); 
+// DOCTYPE & head
+$app = new Head('Gestione iscritti');
+$app->openHead();
+require_once("include_head.php");
+require_once("jquery_link.php");
+require_once("bootstrap_link.php");
+require_once('lingua.php'); 
+require_once('post_mnu.php'); 
+
 if (isset($_POST['submit']))    $azione  =$_POST['submit'];
 
 // test scelta effettuata sul pgm chiamante
 if (($azione == 'modifica' ||$azione == 'cancella' ) && $bid == '') {header('location:gest_mnu.php');}
-// mostra stringa bottoni o chiude
+
+// mostra toolbar o chiude
 switch ($azione)
-{   case 'nuovo':
-          $param  = array( 'Menu - inserimento','mnu','write_mnu.php','salva|nuovo','ritorno');  
-          $btx    = new bt_param($param);     $btx->show_bottoni($param);
-         break; 
-    case 'modifica':  
-          $param  = array( 'Menu - modifica','mnu','write_mnu.php','salva|modifica','ritorno');  
-          $btx    = new bt_param($param);     $btx->show_bottoni($param);
-         break; 
+{    
+
     case 'cancella' :
           $param  = array( 'Menu - conferma cancellazione','mnu','write_mnu.php','cancella','ritorno');  
           $btx    = new bt_param($param);     $btx->show_bottoni($param);
@@ -46,31 +45,44 @@ switch ($azione)
     break;
     
     case 'nuovo':
+	 //   toolbar
+	$param  = array('salva|nuovo','ritorno');    
+	$btx    = new bottoni_str_par('Menu - inserimento','mnu','write_mnu.php',$param);  
+		$btx->btn();
       $mnu = new DB_ins('mnu','bprog');                             
       $xxx = $mnu->insert();     
 echo  "<fieldset class='gest'>";
-
-      $f3 = new field($xxx,'bprog',03,'Progressivo');          $f3->field_i();      
-      $ts = new DB_tip_i('stato','bstat','','Stato record');        $ts->select();
-      $f4 = new field('','bmenu',03,'Nome');                    $f4->field_i();       
-      $tmnu = new DB_tip_i('menu','btipo','','Aspetto');            $tmnu->select();     
-      $f5 = new field('','btesto',25,'Titolo');                 $f5->field_i();   
-      $f6 = new field('','bselect',1,'Selezionato');                $f6->field_i();         
+      $f3 = new field($xxx,'bprog',03,'Progressivo');          
+		$f3->field_i();      
+      $ts = new DB_tip_i('stato','bstat','','Stato record','');        
+		$ts->select();
+      $f4 = new field('','bmenu',03,'Nome');                    
+		$f4->field_i();       
+      $tmnu = new DB_tip_i('menu','btipo','','Aspetto','');            
+		$tmnu->select();     
+      $f5 = new field('','btesto',25,'Titolo');                 
+		$f5->field_i();   
+      $f6 = new field('','bselect',1,'Selezionato');                
+		$f6->field_i();         
 echo  "</fieldset>"; 
 echo  "</form>";
       break;
      
-    case 'modifica':  // bottoni modifica 
-echo  "<fieldset class='gest'>";  
+    case 'modifica':  // toolbar modifica 
+		$param  = array('salva|modifica','ritorno');    
+	$btx    = new bottoni_str_par('Menu - modifica','mnu','write_mnu.php',$param);  
+		$btx->btn();
+
+	echo  "<fieldset class='gest'>";  
       $_mnu = mysql_query("SELECT * FROM `".DB::$pref."mnu` 
                            WHERE `bid` = $bid  ");    
       $row = mysql_fetch_array($_mnu);
       include('fields_mnu.php');
      $f1 = new field($bid,'bid',1,'');                         $f1->field_h();     
-     $ts = new DB_tip_i('stato','bstat',$bstat,'Stato record');$ts->select();
+     $ts = new DB_tip_i('stato','bstat',$bstat,'Stato record','');$ts->select();
      $f3 = new field($bprog,'bprog',3,'Progressivo');          $f3->field_i();
      $f4 = new field($bmenu,'bmenu',20,'Nome');                $f4->field_i();
-     $tt = new DB_tip_i('menu','btipo',$btipo,'Tipo menu');    $tt->select();
+     $tt = new DB_tip_i('menu','btipo',$btipo,'Tipo menu','');    $tt->select();
      $f6 = new field($btesto,'btesto',50,'Titolo');            $f6->field_i();
      $f7 = new field($bselect,'bselect',1,'Selezionato');      $f7->field_i(); 
       echo  "</fieldset></form>";

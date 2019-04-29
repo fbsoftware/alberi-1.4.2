@@ -7,6 +7,13 @@
    * Si concede licenza gratuita e NON si risponde di qualsiasi cosa dovuta 
    * all'uso anche improprio di FB open template.
 ============================================================================= */  
+require_once('loadLibraries.php');
+require_once('loadTemplateAdmin.php');
+require_once('lingua.php');
+$head = new getBootHead('gestione iscritti');
+     $head->getBootHead(); 
+echo "</head>";  
+ 
  //   bottoni gestione
 $param = array('nuovo','modifica','cancella','chiudi');
 $btx   = new bottoni_str_par('Utenti','ute','upd_ute.php',$param);     
@@ -14,8 +21,6 @@ $btx   = new bottoni_str_par('Utenti','ute','upd_ute.php',$param);
      
 // memorizza location iniziale
 $_SESSION['location'] = $_SERVER['QUERY_STRING'];
-//$numero   = 0;
-//$numero   = $_SESSION['esito'] ;
 
 // zona messaggi
 $msg = new msg($_SESSION['esito']);

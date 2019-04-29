@@ -11,9 +11,10 @@
 =============================================================================  */
 if (!function_exists('getBootHead')) 
 {
-// DOCTYPE & head
-include_once 'include_gest.php';
-$head = new getBootHead('Struttura DB',$_SESSION['ambito']);
+require_once('loadLibraries.php');
+require_once('loadTemplateAdmin.php');
+require_once('lingua.php');
+$head = new getBootHead('gestione iscritti');
      $head->getBootHead(); 
 echo "</head>"; 
 }  
@@ -22,7 +23,7 @@ echo "</head>";
 $param  = array('mostra','chiudi');    
 $btx    = new bottoni_str_par('Struttura del database','config','vid_db.php',$param);  
      $btx->btn();
-     
+  
 //  filtro la tabella da visualizzare
 echo "<div><fieldset class='input'><div>";
 $tb = new DB_sel_table(DB::$pref);

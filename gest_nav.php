@@ -10,22 +10,22 @@
    * Gestione della tabella 'nav' voci di menu e sottovoci.
    * Aggiunto "nhead" per gestire header per ogni voce menu (Max.9).
 =============================================================================  */
-include_once 'include_gest.php';
+require_once('loadLibraries.php');
+require_once('loadTemplateAdmin.php');
+require_once('lingua.php');
+require_once('connectDB.php');
 $tipo         = $_SESSION['pag']; 
-// DOCTYPE & head
- $head = new getBootHead('Buste Consiglio Direttivo');
-      $head->getBootHead();
 
-  //   bottoni gestione
- $param  = array('nuovo','modifica','cancella','chiudi');    
- $btx    = new bottoni_str_par('Voci di menu','nav','upd_nav.php',$param);  
-      $btx->btn();
+  //   toolbar
+	$param  = array('nuovo','modifica','cancella','chiudi');    
+	$btx    = new bottoni_str_par('Voci di menu','nav','upd_nav.php',$param);  
+		$btx->btn();
       
 // memorizza location iniziale
-$_SESSION['location'] = $_SERVER['QUERY_STRING'];
+	$_SESSION['location'] = $_SERVER['QUERY_STRING'];
 
 // zona messaggi
-include_once('msg.php');
+	include_once('msg.php');
   
      // mostra la tabella filtrata --------------------------------------------------
 echo "<div class='container fb-table-scroll'>";     
@@ -43,12 +43,12 @@ echo "<th>Contenuto</th>";
 echo "<th>SEL</th>";
 echo "<th>ACC</th>";
 echo "</thead>";          
-//echo "<br >"; 
-    $sql2 = "  SELECT * 
+
+     $sql = "  SELECT * 
                FROM `".DB::$pref."nav` 
-               WHERE nmenu='".TMP::$ttdesc."' 
+               WHERE nmenu='".TMP::$tmenu."' 
                ORDER BY nprog";
-            foreach($PDO->query($sql2) as $row)             
+            foreach($PDO->query($sql) as $row)             
   {  include('fields_nav.php');
      echo "<tr>";
   $f1 = new fieldi($nid,'nid',2);            

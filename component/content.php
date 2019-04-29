@@ -10,20 +10,21 @@
    * Robot di crittura dei contenuti in base alla voce di menu.      
    * 3.0 uso di 'namespace'
 =============================================================================*/
+$app = new DB();
+try  {
+	$PDO = new PDO("mysql:host=".DB::$host.";dbname=".DB::$db."",DB::$user,DB::$pw);
+     } catch(PDOException $e) { echo $e->getMessage();  }
+	$PDO->beginTransaction();
       $sql = "SELECT * 
-              FROM `".$pref."nav` 
+              FROM `".DB::$pref."nav` 
               WHERE nli='".$forma."' and ndesc='$sub' and nmenu='admin' and nstat <> 'A' and ntipo<>'' 
               ORDER BY nprog";  
-      $result = mysql_query($sql);   
-      if(mysql_num_rows($result)!=0)  // test presenza contenuti di questo tipo, altrimenti esco 
-      {
-      while($row = mysql_fetch_array($result))
-          {     
+foreach($PDO->query($sql) as $row)
+		{
           $nsotvo = $row['nsotvo']; 
           $ntipo  = $row['ntipo']; 
-         @$ndesc  = $row['ndesc']; 
-          }
-      }
+          $ndesc  = $row['ndesc']; 
+		}
 
 if (isset ($ntipo)) 
 {     

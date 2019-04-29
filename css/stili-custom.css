@@ -852,9 +852,8 @@ margin: 0;
 padding: 0;
 background: gainsboro;
 list-style: none;
-font: 1.2em Verdana;
+font: 1em Verdana;
 font-weight: bold;
-
 width: 90%;
 }
 
@@ -932,3 +931,8 @@ background: #444444;
     /* prevent horizontal scrollbar */
     overflow-x: hidden;
   }
+h1.toolbar	{
+font-family: Lato, "Helvetica Neue", Helvetica, Arial, sans-serif;
+font-size:14pt;	
+font-weight: bold;
+}

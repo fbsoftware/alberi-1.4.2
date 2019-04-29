@@ -9,12 +9,12 @@
 =============================================================================
  * gestione tabella 'ind' per indirizzi vari
  * ============================================================================= */
-// DOCTYPE & head
-include_once 'include_gest.php';
+require_once('loadLibraries.php');
+require_once('loadTemplateAdmin.php');
+require_once('lingua.php');
 $head = new getBootHead('gestione iscritti');
      $head->getBootHead(); 
-echo "</head>";   
-
+echo "</head>"; 
 include_once('post_ind.php');
 $azione   = $_POST['submit'];
 
@@ -73,11 +73,11 @@ switch ($azione)
      $ins = new DB_ins('ind','numero');                             
      $fa = new input(array($ins->insert1(),'numero',5,'Numero esterno','','rb'));          
           $fa->field();
-     $ts = new DB_tip_i('stato','stato','','Stato record');         
+     $ts = new DB_tip_i('stato','stato','','Stato record','');         
           $ts->select();
-     $tb = new DB_tip_i('tit','titolo',' ','Titolo');               
+     $tb = new DB_tip_i('tit','titolo',' ','Titolo','');               
           $tb->select();
-     $tc = new DB_tip_i('tit+','titolo_plus',' ','Segue titolo');   
+     $tc = new DB_tip_i('tit+','titolo_plus',' ','Segue titolo','');   
           $tc->select();
      $fd = new input(array(' ','RagioneSociale',40,'R.Sociale/Cognome','','ir'));   
           $fd->field();
@@ -121,11 +121,11 @@ switch ($azione)
           $fz->field();
      $fa = new input(array($numero,'numero',5,'Numero esterno','','rb'));        
           $fa->field();
-     $ts = new DB_tip_i('stato','stato',$stato,'Stato record');        
+     $ts = new DB_tip_i('stato','stato',$stato,'Stato record','');        
           $ts->select();
-     $tb = new DB_tip_i('tit','titolo',$titolo,'Titolo');               
+     $tb = new DB_tip_i('tit','titolo',$titolo,'Titolo','');               
           $tb->select();
-     $tc = new DB_tip_i('tit+','titolo_plus',$titolo_plus,'Segue titolo');   
+     $tc = new DB_tip_i('tit+','titolo_plus',$titolo_plus,'Segue titolo','');   
           $tc->select();
      $fd = new input(array($RagioneSociale,'RagioneSociale',40,'R.Sociale/Cognome','','ir'));  
           $fd->field();
@@ -143,7 +143,7 @@ switch ($azione)
           $fj->field();
      $fq = new input(array($data_inserimento,'data_inserimento',12,'Data inserimento','','d1'));  
           $fq->field();
-     $tv = new DB_tip_i('ind','stampa',$stampa,'Categoria');           
+     $tv = new DB_tip_i('ind','stampa',$stampa,'Categoria','');           
           $tv->select();
      $f1 = new input(array($note,'note',40,'Note','','i'));                  
           $f1->field();

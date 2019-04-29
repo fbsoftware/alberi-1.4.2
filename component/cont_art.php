@@ -9,16 +9,18 @@
    * -------------------------------------------------------------------------
    * Scrittura dei contenuti di tipo art=articolo sulla pagina-menu.      
 =============================================================================*/
- include_once('classi/FB.class.php');
-    $sql2 = "SELECT * 
+$app = new DB();
+try  {
+	$PDO = new PDO("mysql:host=".DB::$host.";dbname=".DB::$db."",DB::$user,DB::$pw);
+     } catch(PDOException $e) { echo $e->getMessage();  }
+$PDO->beginTransaction();
+    $sql = "SELECT * 
                FROM `".DB::$pref."art` 
                WHERE atit='$dati' and astat <> 'A'
                ORDER BY aprog";
-      $result = mysql_query($sql2);
-      if (mysql_num_rows($result))
-{
-      while($row = mysql_fetch_array($result))
-      { $text   = $row['atext'];    
+	foreach($PDO->query($sql) as $row)
+	{
+		$text   = $row['atext'];    
         $mostra = $row['amostra'];   
         $tit    = $row['atit'];      
         
@@ -27,6 +29,5 @@
        $a->ingloba();              // elementi inglobati nel testo
 
        echo $text;
-      }
-} 
+	}
 ?>

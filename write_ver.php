@@ -9,10 +9,12 @@
 ============================================================================= 
    * Scrittura versamenti iscritti
 =============================================================================*/
-include_once 'include_gest.php';
-// DOCTYPE & head
-$head = new getBootHead('Versamenti iscritti');
+require_once('loadLibraries.php');
+require_once('loadTemplateAdmin.php');
+require_once('lingua.php');
+$head = new getBootHead('gestione iscritti');
      $head->getBootHead(); 
+echo "</head>"; 
 //print_r($_POST);//debug
 include_once('post_ver.php');
 $azione=$_POST['submit'];

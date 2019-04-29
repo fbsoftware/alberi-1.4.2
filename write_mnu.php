@@ -9,9 +9,9 @@
 =============================================================================   
    *  
 ============================================================================= */
-include_once('classi/DB.php');
-
-$dbase = new DB('sito');  $dbase->openDB();;
+require_once('loadLibraries.php');
+require_once('loadTemplateAdmin.php');
+require_once('lingua.php');
 
 include_once('post_mnu.php');
 $azione  =$_POST['submit'];

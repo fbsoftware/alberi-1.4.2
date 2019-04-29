@@ -16,11 +16,13 @@ $db1      = new DB('sito');  $db1->openDB();  DB::config();
 $tipo     = $_SESSION['pag'];
 
 //   bottoni gestione
-$btx = new bottoni_str('Stampa breve ISCRITTI','iscbreve');     $btx->bot_prt();
+$btx = new bottoni_str('Stampa breve ISCRITTI','iscbreve');     
+	$btx->bot_prt();
 
 //   scelte
 echo    "<div class='scelte'><fieldset >";
-     $tb = new DB_tip_i('ord','ordine','','Ordine di stampa');      $tb->select();
+     $tb = new DB_tip_i('ord','ordine','','Ordine di stampa','');      
+		$tb->select();
 
   echo "</form></fieldset></div>" ;
 ?>

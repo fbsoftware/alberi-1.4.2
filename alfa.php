@@ -10,7 +10,7 @@
    *
 =============================================================================  */
 $tipo= $_SESSION['pag'];
-include_once('classi/DB.php');
+/*include_once('classi/DB.php');
 $db1      = new DB('sito');  $db1->openDB();  DB::config();
 
 $dbhost = DB::$a;
@@ -19,7 +19,11 @@ $dbname = DB::$c;
 $dbpass = DB::$p;
 try  {
      $conn = new PDO("mysql:host=$dbhost;dbname=$dbname", $dbuser, $dbpass);
-     } catch(PDOException $e) { echo $e->getMessage();  }
+     } catch(PDOException $e) { echo $e->getMessage();  }*/
+	 
+require_once('loadLibraries.php');
+require_once('loadTemplateAdmin.php');
+require_once('connectDB.php');
 
 $cmd = 'SELECT * FROM '.DB::$pref.'isc 
 		WHERE  cognome LIKE :term and stato= "'.$tipo.'" 

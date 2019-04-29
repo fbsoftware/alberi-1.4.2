@@ -20,7 +20,7 @@ $site          = DB::$site;             // descrizione sito
 $page_title    = DB::$page_title;       // titolo della pagina
 $livello       = DB::$livello;          // livello
 $rilascio      = DB::$rilascio;         // rilascio
-$modifica      = DB::$modifica;         // modifica
+$modifica      = DB::$modify;         // modifica
 
 // template attivo
 $tmp = new DB_tmp('sito');   $tmp->read_tmp() ;       

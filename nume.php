@@ -24,7 +24,7 @@ try  {
 $cmd = 'SELECT * FROM '.DB::$pref.'isc
           WHERE numero_iscrizione >=  :term and stato= "'.$tipo.'" 
           ORDER BY numero_iscrizione ASC LIMIT 15';
-$term = $_GET['term'];
+$term = $_GET['term'] . "%";
 $result = $conn->prepare($cmd);
 $result->bindValue(":term", $term);
 $result->execute();

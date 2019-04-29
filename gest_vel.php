@@ -9,10 +9,12 @@
 =============================================================================  
    * Gestione versamenti elargitori
 =============================================================================  */
-// DOCTYPE & head
-include_once 'include_gest.php';
-$head = new getBootHead('versamenti iscritti');
-     $head->getBootHead();  
+require_once('loadLibraries.php');
+require_once('loadTemplateAdmin.php');
+require_once('lingua.php');
+$head = new getBootHead('gestione iscritti');
+     $head->getBootHead(); 
+echo "</head>";   
 ?>   
         <script type="text/javascript">
             $(function()

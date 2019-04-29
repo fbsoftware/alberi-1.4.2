@@ -15,27 +15,23 @@
 =============================================================================*/
 
 // stampa il testo dell'argomento se richiesto.
-       $sql1 = "SELECT * FROM `".$pref."arg` 
+       $sql = "SELECT * FROM `".DB::$pref."arg` 
                 WHERE rcod='$dati' and rstat <> 'A'  ";
-      $result1 = mysql_query($sql1);   
-      if(mysql_num_rows($result1)!=0)  
-      {
-       while($row = mysql_fetch_array($result1))
-        { $rtext   = $row['rtext']; 
-          $rmostra = $row['rmostra']; 
+foreach($PDO->query($sql) as $row)
+		{
+        $rtext   = $row['rtext']; 
+        $rmostra = $row['rmostra']; 
         }
-        if ($rmostra == 1) {  echo $rtext;   }
-      }     
+        if ($rmostra == 1) 
+			{  echo $rtext;   }
       
 // leggo i capitoli dell'argomento e stampo il testo del capitolo(if) ed i suoi articoli.
  
-       $sql2 = "SELECT * FROM `".$pref."cap` 
+       $sql2 = "SELECT * FROM `".DB::$pref."cap` 
                 WHERE carg='$dati' and cstat <> 'A'  
                 ORDER BY cprog ";
-      $result2 = mysql_query($sql2);   
-      if(mysql_num_rows($result2)!=0)  
-      {
-       while($row2 = mysql_fetch_array($result2))
+foreach($PDO->query($sql2) as $row2)
+
           { 
           $ctext   = $row2['ctext']; 
           $cmostra = $row2['cmostra']; 
@@ -43,6 +39,5 @@
           if ($cmostra == 1) {  echo $ctext;   }
           include 'cont_artarg.php'; 
           }                   
-      }     
 
 ?>

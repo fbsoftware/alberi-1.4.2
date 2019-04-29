@@ -35,25 +35,23 @@ class DB
         public static $dir_imm = '';      // directory immagini
         public static $dir_help = '';     // directory contenuti di help
         public static $path_site = '';    // path del sito
-        public static $path_cont = '';    // path completo contenuti
         public static $path_imm = '';     // path completo immagini
-        public static $path_help = '';    // path completo contenuti di help
         public static $page_title = '';   // titolo del sito
-        public static $debug = '';        // debug sito si-no
-        public static $debuga = '';       // debug amministratore si-no
         public static $content = '';      // colonna dei contenuti
         public static $e_mail = '';       // e-mail relativa al sito       
         public static $url = '';          // url del sito (http://....)
         public static $livello = '';      // livello di versione
         public static $modifica = '';     // modifica di versione
         public static $rilascio = '';     // rilascio di versione
-
+        public static $author = '';       // autore
+        public static $keywords = '';     // parole chiave
+        public static $lib = '';          // libreria standard
+		
 //        public $mod_ins = 0;              // progressivo per inserimento moduli
         public $max = 0;                  // nuovo inserimento
 
   
-        public function __construct()     // SERVE ? vedi getConfig()
-
+        public function __construct()     
           {
           $arr = parse_ini_file ( "config.ini" , true );
 
@@ -71,61 +69,19 @@ class DB
                   self::$incr       = $arr['config']['incr'];
                   self::$site       = $arr['config']['site'];
                   self::$sep        = $arr['config']['sep'];
-                  self::$dir_cont   = $arr['config']['dir_cont'];
                   self::$dir_imm    = $arr['config']['dir_imm'];
-                  self::$dir_help   = $arr['config']['dir_help'];
-                  self::$content    = $arr['config']['content'];
                   self::$page_title = $arr['config']['page_title'];
                   self::$e_mail     = $arr['config']['e_mail'];
                   self::$url        = $arr['config']['url'];
-
-                  self::$debug      = $arr['service']['debug'];
-                  self::$debuga     = $arr['service']['debuga'];
-
+                  self::$author     = $arr['config']['author'];
+                  self::$keywords   = $arr['config']['keywords'];
+				  self::$lib        = $arr['config']['lib'];
+				  
                   self::$path_site  = DB::$root.DB::$site.DB::$sep;
-                  self::$path_cont  = DB::$root.DB::$site.DB::$sep.DB::$dir_cont;
-                  self::$path_imm   = DB::$root.DB::$site.DB::$sep.DB::$dir_imm;
-                  self::$path_help  = DB::$root.DB::$site.DB::$sep.DB::$dir_help;
+                  self::$path_imm  = DB::$root.DB::$site.DB::$sep.DB::$dir_imm;
           return $arr;
          }
-
-         
-           public function getConfig()     // variabili di inizializzazione
-         	{ // BEGIN getConfig
-           $arr = parse_ini_file ("config.ini" , true );
-
-                  self::$livello   = $arr['versione']['livello'];
-                  self::$rilascio  = $arr['versione']['rilascio'];
-                  self::$modifica  = $arr['versione']['modifica'];
-
-                  self::$root      = $arr['DB']['root'];
-                  self::$host      = $arr['DB']['host'];
-                  self::$user      = $arr['DB']['user'];
-                  self::$pw        = $arr['DB']['pw'];
-                  self::$db        = $arr['DB']['db'];
-                  self::$pref      = $arr['DB']['pref'];
-
-                  self::$incr       = $arr['config']['incr'];
-                  self::$site       = $arr['config']['site'];
-                  self::$sep        = $arr['config']['sep'];
-                  self::$dir_cont   = $arr['config']['dir_cont'];
-                  self::$dir_imm    = $arr['config']['dir_imm'];
-                  self::$dir_help   = $arr['config']['dir_help'];
-                  self::$content    = $arr['config']['content'];
-                  self::$page_title = $arr['config']['page_title'];
-                  self::$e_mail     = $arr['config']['e_mail'];
-                  self::$url        = $arr['config']['url'];
-
-                  self::$debug      = $arr['service']['debug'];
-                  self::$debuga     = $arr['service']['debuga'];
-
-                  self::$path_site  = DB::$root.DB::$site.DB::$sep;
-                  self::$path_cont  = DB::$root.DB::$site.DB::$sep.DB::$dir_cont;
-                  self::$path_imm   = DB::$root.DB::$site.DB::$sep.DB::$dir_imm;
-                  self::$path_help  = DB::$root.DB::$site.DB::$sep.DB::$dir_help;
-                    return $arr;
-        	      } // END getConfig
-
+				  
 // destruct        
          public function __destruct()      // chiusura DB e connessione
         {   $con = NULL;
@@ -139,7 +95,7 @@ class DB
 */
 
 class TMP       extends  DB
-{ 
+{ public static $ambiente     =  '';	// ambiente: sito,admin
   public static $tid     =  '';
   public static $tprog   =  '';
   public static $tstat   =  '';
@@ -158,26 +114,45 @@ class TMP       extends  DB
   public static $tglyforma    = '';    // glifi - forma  
   public static $tglyreverse  = '';    // glifi - reverse color
 
+		function __construct($ambiente ='sito') 
+		{
+		self::$ambiente = $ambiente;
+		}
+
        public function  read_tmp()       // legge template selezionato
             { 
               $con = "mysql:host=".self::$host.";dbname=".self::$db."";
               $PDO = new PDO($con,self::$user,self::$pw);
               $PDO->beginTransaction();
+					if (self::$ambiente == 'sito') 
+					{
               $sql="SELECT *
                     FROM `".self::$pref."tmp`
-                    WHERE tsel='*' limit 1";
+                    WHERE tsel='*' 
+					AND	  ttipo <> 'admin'
+					limit 1";
+					} 
+					else 
+					{
+              $sql="SELECT *
+                    FROM `".self::$pref."tmp`
+                    WHERE tsel='*' 
+					AND	  ttipo = 'admin'
+					limit 1";
+					}			  
+
               foreach($PDO->query($sql) as $row)
               {  
-               self::$tid     = $row['tid'];
-               self::$tprog   = $row['tprog'];
-               self::$tstat   = $row['tstat'];
-               self::$tsel    = $row['tsel'];
-               self::$ttdesc  = $row['ttdesc'];
-               self::$tfolder = $row['tfolder'];
-               self::$tdesc   = $row['tdesc'];
-               self::$tmenu   = $row['tmenu'];
-               self::$tlang   = $row['tlang'];
-               self::$tcolor  = $row['tcolor'];
+               self::$tid     		= $row['tid'];
+               self::$tprog   		= $row['tprog'];
+               self::$tstat   		= $row['tstat'];
+               self::$tsel    		= $row['tsel'];
+               self::$ttdesc  		= $row['ttdesc'];
+               self::$tfolder 		= $row['tfolder'];
+               self::$tdesc   		= $row['tdesc'];
+               self::$tmenu   		= $row['tmenu'];
+               self::$tlang   		= $row['tlang'];
+               self::$tcolor  		= $row['tcolor'];
                self::$tslidebutt    = $row['tslidebutt'];
                self::$tslidetime    = $row['tslidetime'];
                self::$tportitle     = $row['tportitle'];
@@ -185,40 +160,11 @@ class TMP       extends  DB
                self::$tgliftitle    = $row['tgliftitle'];
                self::$tgliftext     = $row['tgliftext'];
                self::$tglyreverse   = $row['tglyreverse'];
-               return $row;   // per eventuale utilizzo
                }
+               return $row;   // per eventuale utilizzo
           }
 
 
-       public function  read_tmp_a()       // legge template selezionato -ADMIN-
-            {
-              $con = "mysql:host=".self::$host.";dbname=".self::$db."";
-              $PDO = new PDO($con,self::$user,self::$pw);
-              $PDO->beginTransaction();
-              $sql="SELECT *
-                    FROM `".self::$pref."tmp`
-                    WHERE ttdesc='admin' limit 1";
-              foreach($PDO->query($sql) as $row)
-              {
-               self::$tid     = $row['tid'];
-               self::$tprog   = $row['tprog'];
-               self::$tstat   = $row['tstat'];
-               self::$tsel    = $row['tsel'];
-               self::$ttdesc  = $row['ttdesc'];
-               self::$tfolder = $row['tfolder'];
-               self::$tdesc   = $row['tdesc'];
-               self::$tmenu   = $row['tmenu'];
-               self::$tlang   = $row['tlang'];
-               self::$tcolor  = $row['tcolor'];
-               self::$tslidebutt    = $row['tslidebutt'];
-               self::$tslidetime    = $row['tslidetime'];
-               self::$tportitle     = $row['tportitle'];
-               self::$tgliftitle    = $row['tgliftitle'];       
-               self::$tgliftext     = $row['tgliftext'];
-               self::$tglyreverse   = $row['tglyreverse'];
-               return $row;   // per eventuale utilizzo
-               }
-          }
 
 }             
 /**=============================================================================== 
@@ -261,7 +207,7 @@ class DB_ins          extends DB
                return $this->max;                  
               }              
 
-       public function insert1()          // n� record inserimento +1
+       public function insert1()          // n° record inserimento +1
               {                            
              { 
               $con = "mysql:host=".self::$host.";dbname=".self::$db.""; 
@@ -839,5 +785,44 @@ class DB_decod2         extends DB
             }
               
 }
+/*===============================================================================
+  Funzioni di utilita' database
+  Metodi:
+  select_table()             Mostra struttura tabelle del database aperto
+============================================================================= */
+class DB_sel_table
+{
+     public $tabella   ='';
+     public $pref      ='';
 
+     public function __construct($pref)
+          {
+           $this->pref = $pref;
+          }
+
+    public function select_table()
+          // crea select su un campo
+          {
+     $con = "mysql:host=".DB::$host.";dbname=".DB::$db."";
+     $PDO = new PDO($con,DB::$user,DB::$pw);
+     $PDO->beginTransaction();  
+	 
+		echo "<label for='table'>Scegliere la tabella     </label>";
+		echo "<select name='table'>";
+		$sql = "SHOW TABLES";
+		$result = $PDO->query($sql);
+		
+		print_r($result);//debug
+		while ($tableName = $result->fetch(PDO::FETCH_NUM))
+               {
+        echo  $this->table = $tableName[0];
+               $is = strpos($this->table, $this->pref);
+               if ($is !== false)    // filtro il prefisso da considerare
+                    {
+                    echo "<option value='".$this->table."'>".$this->table."</option>";
+                    }
+          }
+           echo "</select>";
+}
+}
 ?>

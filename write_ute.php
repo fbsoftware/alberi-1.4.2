@@ -7,11 +7,10 @@
    * Si concede licenza gratuita e NON si risponde di qualsiasi cosa dovuta 
    * all'uso anche improprio di FB open template.
 ============================================================================= */
-// DOCTYPE & head
-include_once 'include_gest.php';
-$head = new getBootHead('gestione iscritti');
-     $head->getBootHead(); 
-     echo "</head>";   
+require_once('loadLibraries.php');
+require_once('loadTemplateAdmin.php');
+require_once('lingua.php');
+  
      
 include_once('post_ute.php');
 $azione=$_POST['submit'];

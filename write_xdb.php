@@ -9,11 +9,12 @@
    * ------------------------------------------------------------------------
    * aggiornamento tabella 'xdb'      
 ============================================================================= */ 
-// DOCTYPE & head
-include_once 'include_gest.php';
-$head = new getBootHead('gestione iscritti');
+require_once('loadLibraries.php');
+require_once('loadTemplateAdmin.php');
+require_once('lingua.php');
+$head = new getBootHead('tipologie');
      $head->getBootHead(); 
-     echo "</head>";  
+echo "</head>"; 
       
 // variabili di configurazione 
 $pref          = DB::$pref;               // prefisso tabelle

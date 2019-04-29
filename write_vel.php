@@ -10,11 +10,12 @@
    * Scrittura versamenti elargitori
    * 07/10/2017     + campo evento
 =============================================================================*/
-// DOCTYPE & head
-include_once 'include_gest.php';
+require_once('loadLibraries.php');
+require_once('loadTemplateAdmin.php');
+require_once('lingua.php');
 $head = new getBootHead('gestione iscritti');
      $head->getBootHead(); 
-     echo "</head>";  
+echo "</head>";  
       
 include_once 'post_vel.php';
 $azione=$_POST['submit'];            //print_r($_POST);//debug

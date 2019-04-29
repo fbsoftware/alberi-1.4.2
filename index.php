@@ -1,6 +1,6 @@
 ﻿<?php session_start();      ob_start();
 /*** Fausto Bresciani   fbsoftware@libero.it  www.fbsoftware.altervista.org
-   * package		FAEL gestione iscritti
+   * package		Onlus gestione iscritti
    * versione 1.0    
    * copyright	Copyright (C) 2012 - 2013 FB. All rights reserved.
    * license		GNU/GPL
@@ -9,19 +9,24 @@
 ============================================================================= 
    * 
 ============================================================================= */
-include_once 'include_gest.php';
-$tipo = $_SESSION['pag']; 
+require_once('loadLibraries.php');
+require_once('loadTemplateAdmin.php');
+require_once('connectDB.php');
+
 // DOCTYPE & head
-$head = new getBootHead('gestione iscritti');
-     $head->getBootHead();
+$app = new Head('Gestione iscritti');
+$app->openHead();
+require_once('include_head.php');
+require_once('jquery_link.php');
+require_once('bootstrap_link.php');
+require_once('lingua.php');
+$app->closeHead();
 echo "<body>";
- 	  
 // parametri passati con l'url e memorizzati per iframe
 include 'request.php';
-$_SESSION['pag'] = $pag;      // vedi: include 'request.php'; !!??
+$tipo = $_SESSION['pag']; 
 
-// D E B U G      
-//include('moduli/debug.php');
+$_SESSION['pag'] = $pag;      // vedi: include 'request.php'; !!??
    
 // test se richiesto login
      if(!isset($_COOKIE['admin']))
@@ -72,8 +77,9 @@ $con = NULL;
 include_once('moduli/header_a.php');       
 
 //  N A V I G A T O R E   ===========================
-echo    "<nav>";          
-if  ($menu == 'main_menu') {	include('moduli/nav2.php'); }	
+echo    "<nav>";        
+
+if  (TMP::$tmenu == 'admin') {	include('moduli/nav2.php'); }	
 
 //  bottone logout
 echo "<div class='bottoni'>";
@@ -88,7 +94,6 @@ echo    "</nav>";
 echo "<section id='corpo' class='container'>"; 
 $pos = $tmp->col2;  
 if ($urla){
-          //echo  "<iframe src='".$urla."'  height='550px' width='100%' ></iframe>";  // iframe
           include $urla;
           } 
 if ($dati){

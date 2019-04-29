@@ -28,7 +28,7 @@ $_SESSION['location'] = $_SERVER['QUERY_STRING'];
 echo    "<div class='col-md-4'>";
 echo    "<fieldset >";
 echo "<legend> Scelte </legend>";
-    $tb = new DB_tip_i('ord','ordine','','Ordine di stampa');
+    $tb = new DB_tip_i('ord','ordine','','Ordine di stampa','');
     $tb->select();
 $an = date("Y");// anno di default
     $fd = new input(array($an,'anno',4,'Anno di riferimento',' ','ir'));

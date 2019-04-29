@@ -7,10 +7,19 @@
    * Si concede licenza gratuita e NON si risponde di qualsiasi cosa dovuta 
    * all'uso anche improprio di FB open template.
 ============================================================================= */ 
+if (!function_exists('getBootHead')) 
+{
+require_once('loadLibraries.php');
+require_once('loadTemplateAdmin.php');
+require_once('lingua.php');
+$head = new getBootHead('gestione iscritti');
+     $head->getBootHead(); 
 echo  "<link rel='stylesheet' type='text/css' href='css/style.css'>";
-include_once('classi/bottoni.php');     
+echo "</head>"; 
+}  
+    
       //   bottoni gestione
-     $param  = array( 'Classi','config','widget.php','ritorno');  
+     $param  = array( 'Classi','config','index.php?urla=widget.php&pag=','ritorno');  
      $btx    = new bt_param($param);     $btx->show_bottoni($param);
 // classe: sel 
 echo "<fieldset>";

@@ -16,9 +16,9 @@ $btx   = new bottoni_str_par('Busta libera','isc','prt_busfree.php',$param);
      
 //------- indirizzo libero -----------------------------
           echo "<div class='crea'><fieldset>"; 
-          $tb = new DB_tip_i('tit','titolo','A','Titolo');          
+          $tb = new DB_tip_i('tit','titolo','A','Titolo','');          
                $tb->select();
-          $tc = new DB_tip_i('tit+','titolo_plus',' ','Segue titolo');   
+          $tc = new DB_tip_i('tit+','titolo_plus',' ','Segue titolo','');   
                $tc->select();
           $ta = new input(array('','denominazione',50,'Denominazione',' ','i'));
                $ta->field();

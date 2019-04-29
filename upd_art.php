@@ -7,12 +7,14 @@
    * Si concede licenza gratuita e NON si risponde di qualsiasi cosa dovuta 
    * all'uso anche improprio di FB open template.
 ============================================================================= */
-// DOCTYPE & head
-include_once 'include_gest.php';
-$head = new getBootHead('gestione iscritti');
-     $head->getBootHead(); 
-     echo "</head>";   
-
+require_once('loadLibraries.php');
+require_once('loadTemplateAdmin.php');
+require_once('lingua.php');
+?>
+<link rel="stylesheet" href="css/style.css" type="text/css" media="screen">
+<link rel="stylesheet" href="css/stili-custom.css" type="text/css" media="screen">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<?php
 include('post_art.php');
 if (isset($_POST['submit']))    $azione   =$_POST['submit'];  
 $content  ='--- Inserire qui il testo ---';
@@ -30,11 +32,11 @@ $content  ='--- Inserire qui il testo ---';
       $art = new DB_ins('art','aprog');     
       $f3 = new input(array($art->insert(),'aprog',3,'Progressivo','','ia'));  
           $f3->field();
-      $ts = new DB_tip_i('stato','rstat','','Stato record');  
+      $ts = new DB_tip_i('stato','rstat','','Stato record','');  
           $ts->select();
-      $arg = new DB_sel_l('arg','rprog','','rcod','aarg','rstat','rdesc','Argomento');
+      $arg = new DB_sel_l('arg','rprog','','rcod','aarg','rstat','rdesc','Argomento','');
           $arg->select_label();
-      $cap = new DB_sel_l('cap','cprog','','ccod','acap','cstat','cdesc','Capitolo');
+      $cap = new DB_sel_l('cap','cprog','','ccod','acap','cstat','cdesc','Capitolo','');
           $cap->select_label();
       $f4 = new input(array('','atit',30,'Titolo','','i'));     
           $f4->field(); 
@@ -70,11 +72,11 @@ $sql =  "SELECT * FROM `".DB::$pref."art`
           $f2->field();
       $f3 = new input(array($aprog,'aprog',03,'Progressivo','','i'));    
           $f3->field(); 
-      $ts    = new DB_tip_i('stato','astat',$astat,'Stato record');  
+      $ts    = new DB_tip_i('stato','astat',$astat,'Stato record','');  
           $ts->select();
-      $arg2 = new DB_sel_l('arg','rprog',$aarg,'rcod','aarg','rstat','rdesc','Argomento');
+      $arg2 = new DB_sel_l('arg','rprog',$aarg,'rcod','aarg','rstat','rdesc','Argomento','');
           $arg2->select_label();
-      $cap2 = new DB_sel_l('cap','cprog',$acap,'ccod','acap','cstat','cdesc','Capitolo');
+      $cap2 = new DB_sel_l('cap','cprog',$acap,'ccod','acap','cstat','cdesc','Capitolo','');
           $cap2->select_label();
       $f4 = new input(array($atit,'atit',30,'Titolo articolo','','i'));    
           $f4->field(); 

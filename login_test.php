@@ -9,18 +9,18 @@
    * -------------------------------------------------------
    * Controllo password inserita      
 ============================================================================= */
-include('classi/DB.php');
+require_once('loadLibraries.php');
+require_once('loadTemplateSito.php');
+require_once('lingua.php');
 
 $username  =$_POST['uten'];  
 $upassword =$_POST['pass'];  
 $passmd5   =md5($upassword);    // cripto la password
 
-$dbase = new DB('sito'); $dbase->openDB();
+require_once('connectDB.php');
 $sql = "SELECT * FROM `".DB::$pref."ute`  
         WHERE username='".$username."' and ustat<>'A'";
-
-$result = mysql_query($sql); 
-while($row = mysql_fetch_assoc($result))
+foreach($PDO->query($sql) as $row)
   {  
     	if ( $row['upassword'] == $passmd5)
             { 

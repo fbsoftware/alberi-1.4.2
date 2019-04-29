@@ -25,7 +25,7 @@ $_SESSION['location'] = $_SERVER['QUERY_STRING'];
      echo     "<div class='col-md-12'>";
  
 //   scelte
-     $tb = new DB_tip_i('prt','gruppo','','Gruppo');      
+     $tb = new DB_tip_i('prt','gruppo','','Gruppo','');      
           $tb->select();
      echo "</form>" ;
      echo "</div>" ;       // col

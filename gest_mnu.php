@@ -7,49 +7,47 @@
    * Si concede licenza gratuita e NON si risponde di qualsiasi cosa dovuta 
    * all'uso anche improprio di FB open template.
 ============================================================================= */ 
-echo  "<link rel='stylesheet' type='text/css' href='css/style.css'>";
-// istanzia le classi -----------------------
-include_once('classi/DB.php');
-include_once('classi/bottoni.php');
-include_once('classi/field.php');
+require_once('loadLibraries.php');
+require_once('loadTemplateAdmin.php');
+require_once("connectDB.php");
 
-$db1 = new DB('sito');       $db1->openDB();  
-// variabili di configurazione 
-$pref          = DB::$pref;               // prefisso tabelle
-
- //   bottoni gestione
-$param  = array( 'Menu','mnu','upd_mnu.php','nuovo','modifica','cancella','chiudi');  
-$btx    = new bt_param($param);     $btx->show_bottoni($param);
-
+ //   toolbar
+	$param  = array('nuovo','modifica','cancella','chiudi');    
+	$btx    = new bottoni_str_par('Menu','mnu','upd_mnu.php',$param);  
+		$btx->btn();
 // zona messaggi
 include_once('msg.php');
  
-//   mostra la tabella
-echo    "<div class='tabella'><fieldset class='tabella' >";
-      $fa = new fieldt('Sc',1);             $fa->field();
-      $fb = new fieldt('St',1);             $fb->field();
-      $fc = new fieldt('Prg',3);            $fc->field();
-      $fd = new fieldt('Nome',20);          $fd->field();
-      $fe = new fieldt('Tipo',20);          $fe->field();
-      $ff = new fieldt('Descrizione',50);   $ff->field();
-      $fg = new fieldt('Sel',1);            $fg->field();
+//   testata
+echo "<div class='container fb-table-scroll'>";     
+echo "<table class='table table-hover table-striped table-bordered table-condensed'>"; 
+echo "<thead class='well'>"; 
+echo "<th>Scelta</th>";
+echo "<th>Stato</th>"; 
+echo "<th>Prog</th>"; 
+echo "<th>Nome</th>";
+echo "<th>Tipo</th>";
+echo "<th>Descrizione</th>";
+echo "<th>SEL</th>";
+echo "</thead>";   
 
-      $sql = "SELECT * FROM ".$pref."mnu ORDER BY bprog";
-      $result = mysql_query($sql);                      
-if (mysql_num_rows($result))
-{
-      while($row = mysql_fetch_array($result))
+      $sql = "SELECT * FROM ".DB::$pref."mnu ORDER BY bprog";
+	foreach($PDO->query($sql) as $row)
+
       {       
       include('fields_mnu.php');
-echo "<br >&nbsp;";    
-     $f1 = new fieldi($bid,'bid',2);               $f1->field_ck();     
-     $f2 = new fieldi(@$bstat,'bstat',2);          $f2->field_st();
-     $f3 = new fieldi($bprog,'bprog',3);           $f3->field_r();
-     $f4 = new fieldi($bmenu,'bmenu',20);          $f4->field_r();
-     $f5 = new fieldi($btipo,'btipo',20);          $f5->field_r();
-     $f6 = new fieldi($btesto,'btesto',50);        $f6->field_r();
-     $f7 = new fieldi($bselect,'bselect',1);       $f7->field_r(); 
+     echo "<tr>";
+  $f1 = new fieldi(bnid,'nid',2);            
+  echo "<td>"; $f1->field_ck(); echo "</td>";
+  $st = new fieldi($bstat,'nstat',2);        
+  echo "<td>"; $st->field_st(); echo "</td>";
+  ?>
+	<td><?php echo $bprog ?></td>
+	<td><?php echo $bmenu ?></td>
+	<td><?php echo $btipo ?></td>
+	<td><?php echo $btesto ?></td>
+	<td><?php echo $bselect ?></td>
+<?php
      }
-}
   echo "</form></fieldset></div>";
 ?> 

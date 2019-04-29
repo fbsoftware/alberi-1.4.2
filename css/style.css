@@ -139,7 +139,7 @@ background: #ffffff;
 
 /*  form  */
 form login{
-margin 0 50% 0 50%
+margin :0 50% 0 50%;
 }
 
 form.wdg {

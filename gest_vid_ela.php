@@ -19,7 +19,8 @@ $_SESSION['location'] = $_SERVER['QUERY_STRING'];
 
 //   scelte
 echo    "<div class='col-md-4'><fieldset >";
-     $tb = new DB_tip_i('ord','ordine','','Ordine');      $tb->select();
+     $tb = new DB_tip_i('ord','ordine','','Ordine','');      
+		$tb->select();
 
 echo "</form></fieldset></div>" ;
 ?>

@@ -10,11 +10,12 @@
  * gestione tabella 'ela' per ELARGITORI
  * fissato elargitori nella select
  * ============================================================================= */
-// DOCTYPE & head
-include_once 'include_gest.php';
+require_once('loadLibraries.php');
+require_once('loadTemplateAdmin.php');
+require_once('lingua.php');
 $head = new getBootHead('gestione iscritti');
      $head->getBootHead(); 
-     echo "</head>";   
+echo "</head>";    
 
 include_once('post_ela.php');
 $tipo     = $_SESSION['pag'];
@@ -56,11 +57,11 @@ switch ($azione)
      $ins = new DB_ins('ela','numero');                             
      $fa = new input(array($ins->insert1(),'numero',5,'Numero elargitore',' ','rb'));          
           $fa->field();
-     $ts = new DB_tip_i('ana2','stato','L','Stato record');         
+     $ts = new DB_tip_i('ana2','stato','L','Stato record','');         
           $ts->select();
-     $tb = new DB_tip_i('tit','titolo',' ','Titolo');               
+     $tb = new DB_tip_i('tit','titolo',' ','Titolo','');               
           $tb->select();
-     $tc = new DB_tip_i('tit+','titolo_plus',' ','Segue titolo');   
+     $tc = new DB_tip_i('tit+','titolo_plus',' ','Segue titolo','');   
           $tc->select();
      $fd = new input(array(' ','RagioneSociale',40,'R.Sociale/Cognome',' ','ir'));  
           $fd->field();
@@ -116,11 +117,11 @@ foreach($PDO->query($sql) as $row)
           $fz->field();
      $fa = new input(array($numero,'numero',5,'Numero esterno',' ','rb'));        
           $fa->field();
-     $ts = new DB_tip_i('ana2','stato',$stato,'Stato record');        
+     $ts = new DB_tip_i('ana2','stato',$stato,'Stato record','');        
           $ts->select();
-     $tb = new DB_tip_i('tit','titolo',$titolo,'Titolo');               
+     $tb = new DB_tip_i('tit','titolo',$titolo,'Titolo','');               
           $tb->select();
-     $tc = new DB_tip_i('tit+','titolo_plus',$titolo_plus,'Segue titolo');   
+     $tc = new DB_tip_i('tit+','titolo_plus',$titolo_plus,'Segue titolo','');   
           $tc->select();
      $fd = new input(array($RagioneSociale,'RagioneSociale',40,'R.Sociale/Cognome',' ','ir'));  
           $fd->field();
@@ -316,17 +317,17 @@ foreach($PDO->query($sql) as $row)
           $fg->field();
      $fh = new input(array($localita,'localita',25,'Localit&agrave;',' ','i'));      
           $fh->field();
-     $ft = new DB_tip_i('pr','prov',$provincia,'Provincia');          
+     $ft = new DB_tip_i('pr','prov',$provincia,'Provincia','');          
           $ft->select();
      }
      echo  "</fieldset>"; 
 // Incarichi e cariche
      echo "<fieldset><legend> Incarichi e cariche </legend>"; 
-     $t1 = new DB_tip_i('tipo','tipologia','1','Socio');               
+     $t1 = new DB_tip_i('tipo','tipologia','1','Socio','');               
           $t1->select();      
-     $t2 = new DB_tip_i('car','icons_dir','','Consiglio direttivo');  
+     $t2 = new DB_tip_i('car','icons_dir','','Consiglio direttivo','');  
           $t2->select();     
-     $t3 = new DB_tip_i('car','icons_ese','','Comitato esecutivo');     
+     $t3 = new DB_tip_i('car','icons_ese','','Comitato esecutivo','');     
           $t3->select();     
      echo  "</fieldset>";
  
@@ -352,7 +353,7 @@ foreach($PDO->query($sql) as $row)
           $fv->field();
      $fs = new input(array('','archiviare',2,'Coniuge',' ','i'));               
           $fs->field(); 
-     $fty = new DB_tip_i('prt','stampa',$stampa,'Stampa');          
+     $fty = new DB_tip_i('prt','stampa',$stampa,'Stampa','');          
           $fty->select();
      $fx = new input(array($note,'note',33,'Note',' ','i'));                  
           $fx->field();

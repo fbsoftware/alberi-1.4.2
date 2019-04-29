@@ -36,10 +36,13 @@ case 'nuovo':
      $btx    = new bt_param($param);     $btx->show_bottoni($param); 
 
 echo  "<div class='crea'><fieldset >";
-      $nav = new DB_ins('nav','nprog');   $num = $nav->insert();
-      $f1 = new field($num,'nprog',3,'Progressivo');       $f1->field_i();
-      $ts    = new DB_tip_i('stato','nstat','','Stato record'); $ts->select();
-      $men = new DB_sel_l('mnu','bprog','','bmenu','nmenu','bstat','bmenu','Menu');
+      $nav = new DB_ins('nav','nprog');   
+		$num = $nav->insert();
+      $f1 = new field($num,'nprog',3,'Progressivo');       
+		$f1->field_i();
+      $ts    = new DB_tip_i('stato','nstat','','Stato record',''); 
+		$ts->select();
+      $men = new DB_sel_l('mnu','bprog','','bmenu','nmenu','bstat','bmenu','Menu','');
              $men->select_label();
       $f2 = new field('','nli',20,'Voce');                      $f2->field_i();
       $f4 = new field('','ndesc',20,'Sottovoce');             $f4->field_i();
@@ -48,15 +51,15 @@ echo  "<div class='crea'><fieldset >";
 switch ($ntipo)
 {      
 case 'arg':
-       {$t = new DB_sel_l('arg','rdesc','','rcod','nsotvo','rstat','rdesc','Argomento');
+       {$t = new DB_sel_l('arg','rdesc','','rcod','nsotvo','rstat','rdesc','Argomento','');
        echo $t->select_label()  ; break;
        } 
 case 'cap':
-       {$t = new DB_sel_l('cap','cdesc','','ccod','nsotvo','cstat','cdesc','Capitolo');
+       {$t = new DB_sel_l('cap','cdesc','','ccod','nsotvo','cstat','cdesc','Capitolo','');
        echo $t->select_label()  ; break;
        } 
 case 'art':
-       {$t = new DB_sel_l('art','atit','','atit','nsotvo','astat','atit','Articolo');
+       {$t = new DB_sel_l('art','atit','','atit','nsotvo','astat','atit','Articolo','');
        echo $t->select_label()  ; break;
        } 
 case 'lnk':

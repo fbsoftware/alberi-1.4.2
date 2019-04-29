@@ -1,11 +1,6 @@
  //  tooltip   
      $(document).ready(function(){
-     $('[data-toggle="tooltip"]').tooltip(
-     {
-      html: true 
-     }
-     
-     );
+     $('[data-toggle="tooltip"]').tooltip();
      });
 
 // back to top 

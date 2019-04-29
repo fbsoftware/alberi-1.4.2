@@ -123,7 +123,7 @@ switch ($azione)
      $ff = new field('','indirizzo',40,'Indirizzo');           $ff->field_i();
      $fg = new field('','cap',25,'Cap');                       $fg->field_i();
      $fh = new field('','localita',25,'Localit&agrave;');      $fh->field_i();
-     $ft = new DB_tip_i('pr','prov',' ','Provincia');          $ft->select();
+     $ft = new DB_tip_i('pr','prov',' ','Provincia','');          $ft->select();
 
      echo  "</fieldset>"; 
      echo "</div>"; 

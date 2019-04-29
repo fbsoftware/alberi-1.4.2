@@ -10,11 +10,12 @@
    * Gestione versamenti elargitori - modifica e cancella
    * 07/10/2017     gestione evento
 ============================================================================= */
-// DOCTYPE & head
-include_once 'include_gest.php';
+require_once('loadLibraries.php');
+require_once('loadTemplateAdmin.php');
+require_once('lingua.php');
 $head = new getBootHead('gestione iscritti');
      $head->getBootHead(); 
-     echo "</head>";   
+echo "</head>";   
 
 include_once('post_vel.php');           
 $azione   =$_POST['submit']; 
@@ -78,7 +79,7 @@ foreach($PDO->query($sqlv) as $row)     {
           $f4->field();     
      $f5 = new input(array(number_format($eimporto,2,',',''),'eimporto',10,'Importo',' ','ir'));               
           $f5->field();
-     $tb = new DB_tip_i('pag','emezzo',$emezzo,'A mezzo');      
+     $tb = new DB_tip_i('pag','emezzo',$emezzo,'A mezzo','');      
           $tb->select(); 
      $f9 = new input(array($erife,'erife',30,'Riferimento','Nome della banca','i'));          
           $f9->field();     

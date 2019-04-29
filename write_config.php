@@ -8,6 +8,8 @@
    * all'uso anche improprio di FB open template.
 ==============================================================================
    * manutenzione config.ini 
+   1.0.0 tolto debug,path help e testi,contenuto
+         aggiunto libreria classi standard, autore e keywords 
 ==============================================================================*/
 $azione  =$_POST['submit']; 
 print_r($_POST);//debug
@@ -36,18 +38,15 @@ $file->setValue('DB', 'db'  , $_POST['db']);
 $file->setValue('DB', 'pref', $_POST['pref']);
 
 $file->setValue('config', 'site'     , $_POST['site']);
-$file->setValue('config', 'dir_cont' , $_POST['p_txt']);
-$file->setValue('config', 'dir_help' , $_POST['p_hlp']);
+$file->setValue('config', 'author'  ,  $_POST['author']);
+$file->setValue('config', 'keywords' , $_POST['keywords']);
 $file->setValue('config', 'dir_imm'  , $_POST['p_imm']);
 $file->setValue('config', 'incr',      $_POST['incr']);
 $file->setValue('config', 'sep',       $_POST['sep']);
 $file->setValue('config', 'page_title',$_POST['home']);
-$file->setValue('config', 'content',   $_POST['cont']);
+$file->setValue('config', 'lib',       $_POST['lib']);
 $file->setValue('config', 'e_mail',    $_POST['mail']);
 $file->setValue('config', 'url',       $_POST['url']);
-
-$file->setValue('service', 'debug'  ,  $_POST['dbg']);
-$file->setValue('service', 'debuga' ,  $_POST['dbga']);
 
 header('location:gest_config.php'); 
 

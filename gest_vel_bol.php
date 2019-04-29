@@ -9,11 +9,12 @@
 =============================================================================  
    * Gestione versamenti elargitori - ricerca per ricevuta
 =============================================================================  */
-// DOCTYPE & head
-include_once 'include_gest.php';
+require_once('loadLibraries.php');
+require_once('loadTemplateAdmin.php');
+require_once('lingua.php');
 $head = new getBootHead('gestione iscritti');
      $head->getBootHead(); 
-     echo "</head>";   
+echo "</head>";    
 $tipo         = $_SESSION['pag'];            
 
  //   bottoni gestione

@@ -27,7 +27,7 @@ $tipo     = $_SESSION['pag'];
 echo    "<div class='col-md-4'>";
 echo    "<fieldset >";
 echo "<legend> Scelte </legend>";
-    $tb = new DB_tip_i('ord','ordine','','Ordine di stampa');       
+    $tb = new DB_tip_i('ord','ordine','','Ordine di stampa','');       
           $tb->select();
     $fd = new input(array(date("Y"),'anno',4,'Anno di riferimento',' ','ir'));            
           $fd->field(); 

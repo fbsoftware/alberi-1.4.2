@@ -11,11 +11,12 @@
    * 17.04.2013 - Datepicker   
    * 23-11-2017 - PDO e bootstrap
 ============================================================================= */
-// DOCTYPE & head
-include_once 'include_gest.php';
+require_once('loadLibraries.php');
+require_once('loadTemplateAdmin.php');
+require_once('lingua.php');
 $head = new getBootHead('gestione iscritti');
      $head->getBootHead(); 
-     echo "</head>";   
+echo "</head>";   
 include_once('post_isc.php');
 $tipo     = $_SESSION['pag'];
 $id       = $_POST['id'];
@@ -113,9 +114,9 @@ switch ($azione)
      $ins = new DB_ins('isc','numero_iscrizione'); 
      $fa = new input(array($ins->insert1(),'numero_iscrizione',5,'Numero iscrizione','','rb'));
           $fa->field();
-     $tb = new DB_tip_i('tit','titolo','A','Titolo');          
+     $tb = new DB_tip_i('tit','titolo','A','Titolo','');          
           $tb->select();
-     $tc = new DB_tip_i('tit+','titolo_plus',' ','Segue titolo');   
+     $tc = new DB_tip_i('tit+','titolo_plus',' ','Segue titolo','');   
           $tc->select();
      $fd = new input(array(' ','cognome',25,'Cognome','','ir'));               
           $fd->field();
@@ -127,7 +128,7 @@ switch ($azione)
           $fg->field();
      $fh = new input(array('','localita',25,'Localit&agrave;','','i'));      
           $fh->field();
-     $ft = new DB_tip_i('pr','prov',' ','Provincia');          
+     $ft = new DB_tip_i('pr','prov',' ','Provincia','');          
           $ft->select();
      echo  "</fieldset>"; 
      echo "</div>";   // col
@@ -139,7 +140,7 @@ switch ($azione)
           $fl->field();
      $fm = new input(array('','nascita_luogo',25,'Luogo di nascita','','i'));  
           $fm->field();
-     $ft = new DB_tip_i('pr','prov_na','','Provincia di nascita');          
+     $ft = new DB_tip_i('pr','prov_na','','Provincia di nascita','');          
           $ft->select();
      $fy = new input(array('Italia','nascita_nazione',25,'Nazione di nascita','','i'));
           $fy->field();
@@ -155,9 +156,9 @@ switch ($azione)
           $fv->field();
 //     $fs = new input(array(0,'archiviare',2,'Coniuge','C=coniuge di altro iscritto','i'));               
  //         $fs->field();
-     $ftz = new DB_tip_i('con','archiviare','','Coniuge');          
+     $ftz = new DB_tip_i('con','archiviare','','Coniuge','');          
           $ftz->select();		  
-     $fty = new DB_tip_i('prt','stampa',0,'Stampa');          
+     $fty = new DB_tip_i('prt','stampa',0,'Stampa','');          
           $fty->select();
      $fx = new input(array($note,'note',33,'Note','','i'));                  
           $fx->field();
@@ -169,11 +170,11 @@ switch ($azione)
      echo     "<div class='row '>";
      echo     "<div class='col-md-6'>";
      echo "<fieldset><legend> Incarichi e cariche </legend>"; 
-     $t1 = new DB_tip_i('tipo','tipologia','1','Socio');               
+     $t1 = new DB_tip_i('tipo','tipologia','1','Socio','');               
           $t1->select();      
-     $t2 = new DB_tip_i('car','icons_dir','','Consiglio direttivo');  
+     $t2 = new DB_tip_i('car','icons_dir','','Consiglio direttivo','');  
           $t2->select();     
-     $t3 = new DB_tip_i('car','icons_ese','','Comitato esecutivo');     
+     $t3 = new DB_tip_i('car','icons_ese','','Comitato esecutivo','');     
           $t3->select();     
      echo  "</fieldset>";
      echo  "</div>";   //col
@@ -203,7 +204,7 @@ foreach($PDO->query($sql) as $row)
           $fa->field(); 
      $tb = new DB_tip_i('tit','titolo',$titolo,'Titolo');      
           $tb->select();
-     $tc = new DB_tip_i('tit+','titolo_plus',$titolo_plus,'Segue titolo');  
+     $tc = new DB_tip_i('tit+','titolo_plus',$titolo_plus,'Segue titolo','');  
           $tc->select();
      $fd = new input(array($cognome,'cognome',25,'Cognome','','ir'));           
           $fd->field();
@@ -215,7 +216,7 @@ foreach($PDO->query($sql) as $row)
           $fg->field();
      $fh = new input(array($localita,'localita',25,'Localit&agrave;','','i')); 
           $fh->field();
-     $ft = new DB_tip_i('pr','prov',$prov,'Provincia');          
+     $ft = new DB_tip_i('pr','prov',$prov,'Provincia','');          
           $ft->select();
      $fj = new input(array($telefono,'telefono',25,'Telefono','','i'));           
           $fj->field();
@@ -234,7 +235,7 @@ foreach($PDO->query($sql) as $row)
           $fl->field();
      $fm = new input(array($nascita_luogo,'nascita_luogo',25,'Luogo di nascita','','i'));  
           $fm->field();
-     $ft = new DB_tip_i('pr','prov_na',$prov_na,'Provincia di nascita');          
+     $ft = new DB_tip_i('pr','prov_na',$prov_na,'Provincia di nascita','');          
           $ft->select();
      $fy = new input(array($nascita_nazione,'nascita_nazione',25,'Nazione di nascita','','i'));
           $fy->field();
@@ -242,12 +243,10 @@ foreach($PDO->query($sql) as $row)
           $fo->field();
      $fq = new input(array($data_iscrizione,'data_iscrizione',12,'Data iscrizione','','d2'));    
           $fq->field();
-//     $fs = new input(array($archiviare,'archiviare',2,'Coniuge','','i'));   
-//          $fs->field(); 
-     $ftz = new DB_tip_i('con','archiviare',$archiviare,'Coniuge');          
+     $ftz = new DB_tip_i('con','archiviare',$archiviare,'Coniuge','');          
           $ftz->select();		  
 		  
-     $fty = new DB_tip_i('prt','stampa',$stampa,'Stampa');          
+     $fty = new DB_tip_i('prt','stampa',$stampa,'Stampa','');          
           $fty->select();
      $fx = new input(array($note,'note',33,'Note','','i'));                   
           $fx->field();    
@@ -288,11 +287,11 @@ foreach($PDO->query($sqlv) as $row)
           
 // Incarichi e cariche
      echo "<fieldset><legend> Incarichi e cariche </legend>"; 
-     $t1 = new DB_tip_i('tipo','tipologia',$tipologia,'Socio');                 
+     $t1 = new DB_tip_i('tipo','tipologia',$tipologia,'Socio','');                 
           $t1->select();      
-     $t2 = new DB_tip_i('car','icons_dir',$icons_dir,'Consiglio direttivo');    
+     $t2 = new DB_tip_i('car','icons_dir',$icons_dir,'Consiglio direttivo','');    
           $t2->select();     
-     $t3 = new DB_tip_i('car','icons_ese',$icons_ese,'Comitato esecutivo');     
+     $t3 = new DB_tip_i('car','icons_ese',$icons_ese,'Comitato esecutivo','');     
           $t3->select();     
      echo  "</fieldset>";
      echo  "</div>";   //col

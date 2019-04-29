@@ -9,14 +9,23 @@
 =============================================================================
    *  visualizza struttura tabella database
 =============================================================================  */
+if (!function_exists('getBootHead')) 
+{
+require_once('loadLibraries.php');
+require_once('loadTemplateAdmin.php');
+require_once('lingua.php');
+$head = new getBootHead('gestione iscritti');
+     $head->getBootHead(); 
 echo  "<link rel='stylesheet' type='text/css' href='css/style.css'>";
-include_once('classi/bottoni.php');  
+echo "</head>"; 
+}  
+ 
 //print_r($_POST);//debug
 $azione = $_POST['submit'];
 $table  = $_POST['table'];
    
       //   bottoni gestione
-     $param  = array( 'Struttura della tabella : <strong>'.$table.'</strong>','config','widget.php','ritorno');  
+     $param  = array( 'Struttura della tabella : <strong>'.$table.'</strong>','config','index.php?urla=widget.php&pag=','ritorno');  
      $btx    = new bt_param($param);     $btx->show_bottoni($param);
 
 switch ($azione) 
@@ -31,34 +40,34 @@ switch ($azione)
             break;
             
      default:
-include_once 'classi/DB.php';   
-$db1 = new DB('sito');       $db1->openDB();  
-$db1 = new DBY();
-$db1->connect();
+     $con = "mysql:host=".DB::$host.";dbname=".DB::$db."";
+    $PDO = new PDO($con,DB::$user,DB::$pw);
+     $PDO->beginTransaction();  
 
 
 if (isset($table))
      {
  //    echo '<h3>Tabella : '.$table.'</h3>';
-$result2 = mysql_query('SHOW FULL COLUMNS FROM '.$table) or die('Non trovata tabella: '.$table);
-if(mysql_num_rows($result2))
-          {
+$sql = "SHOW FULL COLUMNS FROM ".$table;
+
           echo '<table cellpadding="0" cellspacing="0">';
           echo '<tr><th>Campo</th><th>Tipo</th><th>Key</th><th>Default<th>Extra</th><th>Descrizione</th></tr>';
-          while($row2 = mysql_fetch_row($result2))
+     //     while($row2 = mysql_fetch_row($result2))
+			foreach($PDO->query($sql) as $row)
+  
                {
                echo '<tr>';
-               echo '<td class="fc">',$row2[0],'</td>';
-               echo '<td>',$row2[1],'</td>';  // nome campo
-               echo '<td>',$row2[3],'</td>';  // tipo campo
-               echo '<td>',$row2[4],'</td>';  // key si-no
-               echo '<td>',$row2[6],'</td>';  // extra
-               echo '<td>',$row2[8],'</td>';  // descrizione
+               echo '<td class="fc">',$row[0],'</td>';
+               echo '<td>',$row[1],'</td>';  // nome campo
+               echo '<td>',$row[3],'</td>';  // tipo campo
+               echo '<td>',$row[4],'</td>';  // key si-no
+               echo '<td>',$row[6],'</td>';  // extra
+               echo '<td>',$row[8],'</td>';  // descrizione
                echo '</tr>';               
                }
 
           echo '</table>';
-          }
+          
           break;
 
      }

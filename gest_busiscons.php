@@ -9,11 +9,14 @@
 =============================================================================  
    * Stampa buste ISCRITTI appartenenti al consiglio direttivo
 =============================================================================  */
-include_once 'include_gest.php';
+
 $tipo         = $_SESSION['pag']; 
-// DOCTYPE & head
- $head = new getBootHead('Buste Consiglio Direttivo');
-      $head->getBootHead();
+require_once('loadLibraries.php');
+require_once('loadTemplateAdmin.php');
+require_once('lingua.php');
+$head = new getBootHead('gestione iscritti');
+     $head->getBootHead(); 
+echo "</head>"; 
 
  //   bottoni gestione
 $param  = array('stampa','ritorno');    

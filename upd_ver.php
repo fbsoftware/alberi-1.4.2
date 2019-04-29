@@ -9,11 +9,12 @@
 =============================================================================
    * Gestione versamenti iscritti - inserimento e ricerca
 ============================================================================= */
-include_once 'include_gest.php';
- 
-// DOCTYPE & head
-$head = new getBootHead('gestione versamenti iscritti');
-     $head->getBootHead();
+require_once('loadLibraries.php');
+require_once('loadTemplateAdmin.php');
+require_once('lingua.php');
+$head = new getBootHead('gestione iscritti');
+     $head->getBootHead(); 
+echo "</head>"; 
       
 $tipo     = $_SESSION['pag'];
 
@@ -106,7 +107,7 @@ $btx    = new bottoni_str_par_new('Nuovo versamento','ver','write_ver.php',$para
      $n  = number_format(20,2,',','');    // edit decimale
      $f5 = new input(array($n,'vimporto',10,'Importo','','ir'));                   
           $f5->field();
-     $tb = new DB_tip_i('pag','vmezzo','','A mezzo');               
+     $tb = new DB_tip_i('pag','vmezzo','','A mezzo','');               
           $tb->select();
      $f9 = new input(array('','vrife',30,'Banca','','i'));                  
           $f9->field();

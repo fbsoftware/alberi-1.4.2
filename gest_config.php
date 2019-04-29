@@ -9,26 +9,29 @@
 ==============================================================================
    * Gestione "config.ini"
    * Uso di DB_PDO e bootstrap
+   1.0.0 tolto debug,path help e testi,contenuto
+         aggiunto libreria classi standard, autore e keywords 
 =============================================================================  */
-include_once 'include_gest.php';
+require_once('loadLibraries.php');
+require_once('loadTemplateAdmin.php');
+require_once('lingua.php');
+$head = new getBootHead('gestione iscritti');
+     $head->getBootHead(); 
+echo "</head>"; 
 
 $tipo         = $_SESSION['pag']; 
-// DOCTYPE & head
-$head = new getBootHead('gestione layout di pagina');
-     $head->getBootHead();        
 
 // definizione variabili
 $host     = DB::$host;         $uten     = DB::$user;  
 $pw       = DB::$pw;           $db       = DB::$db;  
 $pref     = DB::$pref;         $site     = DB::$site;  
 $home     = DB::$page_title;   $root     = DB::$root;
-$p_imm    = DB::$dir_imm;      $p_txt    = DB::$dir_cont;
-$p_hlp    = DB::$dir_help;     $sep      = DB::$sep;
+$p_imm    = DB::$dir_imm;      $sep      = DB::$sep;
+$author   = DB::$author;       $keywords = DB::$keywords; 
 $incr     = DB::$incr;         $mail     = DB::$e_mail;
-$cont     = DB::$content;      $url      = DB::$url;
-$dbg      = DB::$debug;        $dbga     = DB::$debuga;
-$livello  = DB::$livello;      $modifica = DB::$modifica;     
-$rilascio = DB::$rilascio;                
+$lib      = DB::$lib;          $url      = DB::$url;
+$livello  = DB::$livello;      $modifica = DB::$modify;     
+$rilascio = DB::$rilascio;             
 
      echo     "<div class='container well'>";
      
@@ -54,17 +57,17 @@ echo "</div>";
           $f8->field();   
      $f9 = new input(array($p_imm,'p_imm',30,'Path immagini','','ir'));         
           $f9->field();   
-     $f0 = new input(array($p_txt,'p_txt',30,'Path contenuti','','ir'));        
-          $f0->field();  
-     $fb = new input(array($p_hlp,'p_hlp',30,'Path help','','ir'));             
-          $fb->field();              
-     $fc = new input(array($sep,'sep',10,'Separatore dei path','','ir'));       
+     $au = new input(array($author,'author',20,'Autore','','ir'));                  
+          $au->field();
+     $ke = new input(array($keywords,'keywords',40,'Parole chiave','','i'));      
+          $ke->field();     
+	 $fc = new input(array($sep,'sep',10,'Separatore dei path','','ir'));       
           $fc->field();           
      $fd = new input(array($incr,'incr',10,'Incremento record DB','','ir'));    
           $fd->field();              
      $fe = new input(array($mail,'mail',30,'E-mail del sito','','ir'));         
           $fe->field();              
-     $ff = new input(array($cont,'cont',20,'Colonna dei contenuti','','ir'));   
+     $ff = new input(array($lib,'lib',30,'Libreria standard','Libreria delle classi standard','ir'));   
           $ff->field();             
      $fg = new input(array($url,'url',30,'URL del sito (http://...)','','ir')); 
           $fg->field();             
@@ -101,16 +104,6 @@ echo "<fieldset><legend>&nbsp;Versione&nbsp;</legend> ";
 echo "</fieldset>";
 echo "</div>";
 
-// dati di servizio 
-echo "<div class='col-md-6'>" ;
-echo "<fieldset>
-       <legend>&nbsp;Debug attivato&nbsp;</legend>";
-     $sn = new input(array($dbg,'dbg',1,'Sito','','sn'));                  
-          $sn->field();
-     $sm = new input(array($dbga,'dbga',1,'Amministratore','','sn'));      
-          $sm->field();
-echo "</fieldset>";
-echo "</div>";
 echo "</form>";
 echo "</div>";       // row
 echo "</div>";       // container

@@ -49,4 +49,5 @@ modifica 1 - 14/12/2016
 modifica 2 - 6,7,9/10/2017
      tabella "vel" aggiunto campo evento per gestire i diversi eventi codificati
      nella tabella "xdb" settore "eve" e stampabili con "gest_prt_elanno" e "prt_elanno".
+modifica 3 - 29/04/2019 caricato su GitHub
                                                           

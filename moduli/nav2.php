@@ -25,19 +25,20 @@ include'fields_nav.php';
               
        if ( ($nli == $forma) && ($accesso >= $naccesso) )   // voce corrente
           {  
-          echo "<li>";
-          if (($ntipo == 'arg') || ($ntipo == 'cap') || ($ntipo == 'art') || ($ntipo == 'htm'))
-            {
-            echo "<a class='current' href='index.php?forma=".$nli."&sub=".$row['ndesc']."&content=".$ntipo."&dati=".$nsotvo."&pag=".$npag."'>".$nli."</a>";
-            }
-          else
-            {
-            echo "<a class='current' href='index.php?forma=".$nli."&sub=".$row['ndesc']."&content=".$ntipo."&urla=".$nsotvo."&pag=".$npag."'>".$nli."</a>";            
-            }
+			echo "<li>";
+			if (($ntipo == 'arg') || ($ntipo == 'cap') || ($ntipo == 'art') || ($ntipo == 'htm'))
+				{
+				echo "<a class='current' href='index.php?forma=".$nli."&sub=".$row['ndesc']."&content=".$ntipo."&dati=".$nsotvo."&pag=".$npag."'>".$nli."</a>";
+				}
+			else
+				{
+				echo "<a class='current' href='index.php?forma=".$nli."&sub=".$row['ndesc']."&content=".$ntipo."&urla=".$nsotvo."&pag=".$npag."'>".$nli."</a>";            
+				}
           include('moduli/liv2.php');
           echo "</li>";
           }
-    else              // altre voci             
+    else              // altre voci  
+	
     if ($accesso >= $naccesso) 
      {
           {  

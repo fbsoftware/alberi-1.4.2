@@ -9,12 +9,12 @@
 =============================================================================
    * stampa attestato nuovi iscritti
 ============================================================================= */
-include_once 'include_gest.php';
-
-// DOCTYPE & head
+require_once('loadLibraries.php');
+require_once('loadTemplateAdmin.php');
+require_once('lingua.php');
 $head = new getBootHead('gestione iscritti');
      $head->getBootHead(); 
-     echo "</head>";  
+echo "</head>"; 
 $azione   = $_POST['submit'];
 $id   	= $_POST['id'];
 //print_r($_POST);//debug

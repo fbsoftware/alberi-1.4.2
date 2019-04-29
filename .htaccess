@@ -1,0 +1,6 @@
+
+# # av:Toolbar
+SetEnv AV_TOOLBAR 0
+
+# # av:php5-engine
+AddHandler av-php54 .php

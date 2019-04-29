@@ -10,10 +10,12 @@
    * Gestione versamenti elargitori - inserimento e ricerca
    * 07/10/2017     gestione evento
 ============================================================================= */
-// DOCTYPE & head
-include_once 'include_gest.php';
-$head = new getBootHead('gestione versamenti iscritti');
+require_once('loadLibraries.php');
+require_once('loadTemplateAdmin.php');
+require_once('lingua.php');
+$head = new getBootHead('gestione iscritti');
      $head->getBootHead(); 
+echo "</head>";  
 
 //print_r($_POST);//debug
 include_once('post_vel.php');
@@ -58,7 +60,7 @@ $btx    = new bottoni_str_par_new('ELARGITORI - versamento','vel','write_vel.php
           $f4->field();
      $f5 = new input(array(0,'eimporto',10,'Importo','','ir'));                   
           $f5->field();
-     $tb = new DB_tip_i('pag','emezzo','','A mezzo','Metodo di pagamento');             
+     $tb = new DB_tip_i('pag','emezzo','','A mezzo','Metodo di pagamento','');             
           $tb->select();
      $f9 = new input(array('','erife',30,'Riferimento','Nome della banca','i'));                  
           $f9->field();
