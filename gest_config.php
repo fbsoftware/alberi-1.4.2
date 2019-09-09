@@ -99,7 +99,7 @@ echo "<fieldset><legend>&nbsp;Versione&nbsp;</legend> ";
           $f1->field();
      $f0 = new input(array($rilascio,'rilascio',2,'Rilascio','','ir'));       
           $f0->field();
-     $f2 = new input(array($modifica,'modifica',2,'Modifica','','ir'));       
+     $f2 = new input(array($modify,'modify',2,'Modifica','','ir'));       
           $f2->field();  
 echo "</fieldset>";
 echo "</div>";

@@ -1,4 +1,4 @@
-﻿<?php   ob_start();
+<?php   ob_start();
 /** Fausto Bresciani   fbsoftware@libero.it  www.fbsoftware.altervista.org
    * package		FB open template
    * versione 1.4   
@@ -28,7 +28,7 @@ $file=new FileIni("config.ini", $options);
 
 $file->setValue('versione', 'livello'  ,  $_POST['livello']);
 $file->setValue('versione', 'rilascio' ,  $_POST['rilascio']);
-$file->setValue('versione', 'modifica' ,  $_POST['modifica']);
+$file->setValue('versione', 'modify' ,  $_POST['modify']);
 
 $file->setValue('DB', 'root', $_POST['root']);
 $file->setValue('DB', 'host', $_POST['host']);

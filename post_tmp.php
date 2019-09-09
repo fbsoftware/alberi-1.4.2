@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 $tid      =$_POST['tid'];
 $tprog    =$_POST['tprog'];
 $tstat    =$_POST['tstat'];

@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 include_once 'funzioni/utility.php';
 $id                 =$row['id'];
 $stato              =$row['stato'];

@@ -1,4 +1,4 @@
-﻿<?php     // riga per stampa breve
+<?php     // riga per stampa breve
                $pdf->SetX(10);                  
                $pdf->Cell(10,4.5,$numero_iscrizione);
                $nc = $cognome." ".$nome;               

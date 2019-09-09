@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 // aggiunta campi a tbl_ute
 include('classi/DB.php');
 $dbase = new DB('sito');    $dbase->openDB();

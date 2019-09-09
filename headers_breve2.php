@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 class PDF extends FPDF
 {
 function Header()

@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 // adeguamento delle date
 // ---------------------------------------------
 $vid                =$_POST['vid']; 

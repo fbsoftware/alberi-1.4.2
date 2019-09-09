@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 define('EURO', chr(128));
 
                // stampa indirizzo dell'iscritto

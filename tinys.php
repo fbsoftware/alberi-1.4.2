@@ -1,4 +1,4 @@
-﻿<?php   
+<?php   
      
 ?>
 <script type="text/javascript" src="tinymce/jscripts/tiny_mce/tiny_mce.js"></script>

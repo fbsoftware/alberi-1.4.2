@@ -1,4 +1,4 @@
-﻿<?php session_start();      ob_start();
+<?php session_start();      ob_start();
 /*** Fausto Bresciani   fbsoftware@libero.it  www.fbsoftware.altervista.org
    * package		Onlus gestione iscritti
    * versione 1.0    

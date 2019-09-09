@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 // settaggi per stampa busta 11x23 in PDF
 $pdf = new FPDF('L','mm',array(110,230));       
 $pdf->Open();

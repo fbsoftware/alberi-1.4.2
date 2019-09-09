@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 
 // determina date limite
 $dat=date('Y');

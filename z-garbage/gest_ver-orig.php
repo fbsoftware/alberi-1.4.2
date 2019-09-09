@@ -1,4 +1,4 @@
-﻿<?php   session_start();
+<?php   session_start();
 /*** Fausto Bresciani   fbsoftware@libero.it  www.fbsoftware.altervista.org
    * package		Gestione Associazione
    * versione 1.0   

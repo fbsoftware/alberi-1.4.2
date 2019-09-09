@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 echo "<header>"; 
 echo "<img class='marchio' src='images/logo/logo.png' alt='logo.png' title='logo' >";
 echo "<p>Amministrazione&nbsp;-&nbsp;".DB::$page_title." 

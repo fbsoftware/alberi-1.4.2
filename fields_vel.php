@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 // aggiunto: ecausale (15/3/18)
 $eid      =$row['eid'];
 $estat    =$row['estat'];
